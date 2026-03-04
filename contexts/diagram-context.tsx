@@ -234,7 +234,7 @@ export function DiagramProvider({ children }: { children: React.ReactNode }) {
             saveResolverRef.current = { resolver: null, format: null }
             // For non-xmlsvg formats, skip XML extraction as it will fail
             // Only drawio (which uses xmlsvg internally) has the content attribute
-            if (format === "png" || format === "svg") {
+            if (format === "png" || format === "svg" || format === "pdf") {
                 return
             }
         }
@@ -287,7 +287,9 @@ export function DiagramProvider({ children }: { children: React.ReactNode }) {
         }
 
         // Map format to draw.io export format
-        const drawioFormat = format === "drawio" ? "xmlsvg" : format
+        // PDF exports request SVG from draw.io, then convert via svg2pdf.js
+        const drawioFormat =
+            format === "drawio" ? "xmlsvg" : format === "pdf" ? "svg" : format
 
         // Set up the resolver before triggering export
         saveResolverRef.current = {
@@ -311,6 +313,92 @@ export function DiagramProvider({ children }: { children: React.ReactNode }) {
                     fileContent = exportData
                     mimeType = "image/png"
                     extension = ".png"
+                } else if (format === "pdf") {
+                    // SVG → server-side PNG via sharp (librsvg) → PDF.
+                    // Browser canvas taints when drawing SVG via <img>, so we
+                    // render server-side where no CORS restrictions apply.
+                    ;(async () => {
+                        try {
+                            const { jsPDF } = await import("jspdf")
+
+                            // Decode data URI → raw SVG string
+                            let svgString = exportData
+                            if (exportData.startsWith("data:")) {
+                                const commaIdx = exportData.indexOf(",")
+                                const header = exportData.substring(0, commaIdx)
+                                const payload = exportData.substring(
+                                    commaIdx + 1,
+                                )
+                                svgString = header.includes("base64")
+                                    ? atob(payload)
+                                    : decodeURIComponent(payload)
+                            }
+
+                            // Parse SVG dimensions
+                            const parser = new DOMParser()
+                            const svgDoc = parser.parseFromString(
+                                svgString,
+                                "image/svg+xml",
+                            )
+                            const svgEl = svgDoc.documentElement
+                            let svgWidth =
+                                parseFloat(
+                                    svgEl.getAttribute("width") || "0",
+                                ) || 0
+                            let svgHeight =
+                                parseFloat(
+                                    svgEl.getAttribute("height") || "0",
+                                ) || 0
+                            const viewBox = svgEl.getAttribute("viewBox")
+                            if (viewBox) {
+                                const parts = viewBox.trim().split(/[\s,]+/)
+                                if (!svgWidth)
+                                    svgWidth = parseFloat(parts[2]) || 800
+                                if (!svgHeight)
+                                    svgHeight = parseFloat(parts[3]) || 600
+                            }
+                            if (!svgWidth) svgWidth = 800
+                            if (!svgHeight) svgHeight = 600
+
+                            // Render SVG server-side via sharp/librsvg at 2× density
+                            const res = await fetch("/api/render-svg", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ svgString, scale: 2 }),
+                            })
+                            if (!res.ok)
+                                throw new Error(
+                                    `Render failed: ${res.statusText}`,
+                                )
+                            const { png } = await res.json()
+
+                            const pdf = new jsPDF({
+                                orientation:
+                                    svgWidth > svgHeight
+                                        ? "landscape"
+                                        : "portrait",
+                                unit: "px",
+                                format: [svgWidth, svgHeight],
+                                hotfixes: ["px_scaling"],
+                            })
+                            pdf.addImage(png, "PNG", 0, 0, svgWidth, svgHeight)
+                            pdf.save(`${filename}.pdf`)
+
+                            logSaveToLangfuse(filename, format, sessionId)
+                            if (successMessage) {
+                                toast.success(successMessage, {
+                                    position: "bottom-left",
+                                    duration: 2500,
+                                })
+                            }
+                        } catch (error) {
+                            console.error("PDF export failed:", error)
+                            toast.error("PDF export failed", {
+                                position: "bottom-left",
+                            })
+                        }
+                    })()
+                    return
                 } else {
                     // SVG format
                     fileContent = exportData

@@ -132,7 +132,8 @@
         "formats": {
             "drawio": "Draw.io XML",
             "png": "PNG 画像",
-            "svg": "SVG 画像"
+            "svg": "SVG 画像",
+            "pdf": "PDF ドキュメント"
         },
         "savedSuccessfully": "保存完了！"
     },
