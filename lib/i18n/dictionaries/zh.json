@@ -29,7 +29,12 @@
         "openrouter": "OpenRouter",
         "deepseek": "DeepSeek",
         "siliconflow": "SiliconFlow",
-        "modelscope": "ModelScope"
+        "modelscope": "ModelScope",
+        "minimax": "MiniMax",
+        "glm": "GLM",
+        "qwen": "Qwen",
+        "kimi": "Kimi",
+        "qiniu": "Qiniu"
     },
     "chat": {
         "placeholder": "描述您的图表或上传文件...",
@@ -121,7 +126,10 @@
         "diagramValidation": "图表验证（实验性）",
         "diagramValidationDescription": "使用视觉语言模型验证生成的图表。需要支持视觉的模型，如 GPT-5.2 或 Sonnet-4.5。",
         "enabled": "已启用",
-        "disabled": "已禁用"
+        "disabled": "已禁用",
+        "customSystemMessage": "自定义系统消息",
+        "customSystemMessageDescription": "添加自定义指令，将附加到 AI 的系统提示末尾。",
+        "customSystemMessagePlaceholder": "例如：图表始终使用蓝色配色方案..."
     },
     "save": {
         "title": "保存图表",
@@ -310,6 +318,7 @@
         "optional": "（可选）",
         "baseUrlWithExample": "基础 URL（可选，例如 {example}）",
         "customEndpoint": "自定义端点 URL",
+        "minimaxBaseUrlHint": "使用 /anthropic 端点为 Anthropic 兼容 API（推荐），或使用 /v1 端点为 OpenAI 兼容 API",
         "models": "模型",
         "customModelId": "自定义模型 ID...",
         "allAdded": "已全部添加",

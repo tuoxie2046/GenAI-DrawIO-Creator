@@ -13,7 +13,7 @@
 
 ### 豆包 (字节跳动火山引擎)
 
-> **免费 Token**：在 [火山引擎 ARK 平台](https://www.volcengine.com/activity/newyear-referral?utm_campaign=doubao&utm_content=aidrawio&utm_medium=github&utm_source=coopensrc&utm_term=project) 注册，即可获得所有模型 50 万免费 Token！
+> **免费 Token**：在 [火山引擎 ARK 平台](https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio) 注册，即可获得所有模型 50 万免费 Token！
 
 ```bash
 DOUBAO_API_KEY=your_api_key
@@ -207,6 +207,85 @@ AI_MODEL=openai/gpt-4o
 
 从 [Vercel AI Gateway 仪表板](https://vercel.com/ai-gateway) 获取您的 API 密钥。
 
+### MiniMax
+
+MiniMax 支持两种 API 格式：
+- **Anthropic 兼容**（`/anthropic` 端点）— 推荐，支持 interleaved thinking
+- **OpenAI 兼容**（`/v1` 端点）— 标准 OpenAI 聊天补全格式
+
+```bash
+MINIMAX_API_KEY=your_api_key
+AI_MODEL=MiniMax-M2.7
+```
+
+可选配置：
+
+```bash
+# 中国大陆版，Anthropic 兼容（默认）
+MINIMAX_BASE_URL=https://api.minimaxi.com/anthropic
+
+# 中国大陆版，OpenAI 兼容
+MINIMAX_BASE_URL=https://api.minimaxi.com/v1
+
+# 国际版，Anthropic 兼容
+MINIMAX_BASE_URL=https://api.minimax.io/anthropic
+
+# 国际版，OpenAI 兼容
+MINIMAX_BASE_URL=https://api.minimax.io/v1
+```
+
+### GLM (智谱 AI)
+
+```bash
+GLM_API_KEY=your_api_key
+AI_MODEL=glm-4
+```
+
+可选的自定义端点：
+
+```bash
+GLM_BASE_URL=https://your-custom-endpoint
+```
+
+### Qwen (阿里云通义千问)
+
+```bash
+QWEN_API_KEY=your_api_key
+AI_MODEL=qwen-turbo
+```
+
+可选的自定义端点：
+
+```bash
+QWEN_BASE_URL=https://your-custom-endpoint
+```
+
+### Kimi (月之暗面 Moonshot AI)
+
+```bash
+KIMI_API_KEY=your_api_key
+AI_MODEL=kimi-latest
+```
+
+可选的自定义端点：
+
+```bash
+KIMI_BASE_URL=https://your-custom-endpoint
+```
+
+### Qiniu (七牛云)
+
+```bash
+QINIU_API_KEY=your_api_key
+AI_MODEL=your_model_id
+```
+
+可选的自定义端点：
+
+```bash
+QINIU_BASE_URL=https://your-custom-endpoint
+```
+
 ## 自动检测
 
 如果您只配置了**一个**提供商的 API 密钥，系统将自动检测并使用该提供商。无需设置 `AI_PROVIDER`。
@@ -214,7 +293,7 @@ AI_MODEL=openai/gpt-4o
 如果您配置了**多个** API 密钥，则必须显式设置 `AI_PROVIDER`：
 
 ```bash
-AI_PROVIDER=google  # 或：openai, anthropic, deepseek, siliconflow, doubao, azure, bedrock, openrouter, ollama, gateway, sglang
+AI_PROVIDER=google  # 或：openai, anthropic, deepseek, siliconflow, doubao, azure, bedrock, openrouter, ollama, gateway, sglang, modelscope, minimax, glm, qwen, kimi, qiniu
 ```
 
 ## 服务端多模型配置

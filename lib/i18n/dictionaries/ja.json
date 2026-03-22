@@ -29,7 +29,12 @@
         "openrouter": "OpenRouter",
         "deepseek": "DeepSeek",
         "siliconflow": "SiliconFlow",
-        "modelscope": "ModelScope"
+        "modelscope": "ModelScope",
+        "minimax": "MiniMax",
+        "glm": "GLM",
+        "qwen": "Qwen",
+        "kimi": "Kimi",
+        "qiniu": "Qiniu"
     },
     "chat": {
         "placeholder": "ダイアグラムを説明するか、ファイルをアップロード...",
@@ -121,7 +126,10 @@
         "diagramValidation": "ダイアグラム検証（実験的）",
         "diagramValidationDescription": "視覚言語モデルを使用して生成されたダイアグラムを検証します。GPT-5.2 や Sonnet-4.5 などの VLM が必要です。",
         "enabled": "有効",
-        "disabled": "無効"
+        "disabled": "無効",
+        "customSystemMessage": "カスタムシステムメッセージ",
+        "customSystemMessageDescription": "AIのシステムプロンプトに追加されるカスタム指示を入力します。",
+        "customSystemMessagePlaceholder": "例：ダイアグラムには常に青色のカラースキームを使用..."
     },
     "save": {
         "title": "ダイアグラムを保存",
@@ -310,6 +318,7 @@
         "optional": "（オプション）",
         "baseUrlWithExample": "ベース URL（オプション、例: {example}）",
         "customEndpoint": "カスタムエンドポイント URL",
+        "minimaxBaseUrlHint": "/anthropic で Anthropic 互換 API（推奨）、または /v1 で OpenAI 互換 API を使用",
         "models": "モデル",
         "customModelId": "カスタムモデル ID...",
         "allAdded": "すべて追加済み",
