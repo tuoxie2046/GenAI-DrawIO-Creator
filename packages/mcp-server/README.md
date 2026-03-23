@@ -1,4 +1,4 @@
-# Next AI Draw.io MCP Server
+# GenAI Drawio Creator MCP Server
 
 MCP (Model Context Protocol) server that enables AI agents like Claude Desktop and Cursor to generate and edit draw.io diagrams with **real-time browser preview**.
 
@@ -11,7 +11,7 @@ MCP (Model Context Protocol) server that enables AI agents like Claude Desktop a
   "mcpServers": {
     "drawio": {
       "command": "npx",
-      "args": ["@next-ai-drawio/mcp-server@latest"]
+      "args": ["@genai-drawio-creator/mcp-server@latest"]
     }
   }
 }
@@ -28,7 +28,7 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
   "mcpServers": {
     "drawio": {
       "command": "npx",
-      "args": ["@next-ai-drawio/mcp-server@latest"]
+      "args": ["@genai-drawio-creator/mcp-server@latest"]
     }
   }
 }
@@ -43,7 +43,7 @@ Add to your VS Code settings (`.vscode/mcp.json` in workspace or user settings):
   "mcpServers": {
     "drawio": {
       "command": "npx",
-      "args": ["@next-ai-drawio/mcp-server@latest"]
+      "args": ["@genai-drawio-creator/mcp-server@latest"]
     }
   }
 }
@@ -58,7 +58,7 @@ Add to Cursor MCP config (`~/.cursor/mcp.json`):
   "mcpServers": {
     "drawio": {
       "command": "npx",
-      "args": ["@next-ai-drawio/mcp-server@latest"]
+      "args": ["@genai-drawio-creator/mcp-server@latest"]
     }
   }
 }
@@ -76,7 +76,7 @@ Add to Cursor MCP config (`~/.cursor/mcp.json`):
   "mcpServers": {
     "drawio": {
       "command": "npx",
-      "args": ["@next-ai-drawio/mcp-server@latest"]
+      "args": ["@genai-drawio-creator/mcp-server@latest"]
     }
   }
 }
@@ -85,14 +85,14 @@ Add to Cursor MCP config (`~/.cursor/mcp.json`):
 ### Claude Code CLI
 
 ```bash
-claude mcp add drawio -- npx @next-ai-drawio/mcp-server@latest
+claude mcp add drawio -- npx @genai-drawio-creator/mcp-server@latest
 ```
 
 ### Other MCP Clients
 
 Use the standard MCP configuration with:
 - **Command**: `npx`
-- **Args**: `["@next-ai-drawio/mcp-server@latest"]`
+- **Args**: `["@genai-drawio-creator/mcp-server@latest"]`
 
 ## Usage
 
@@ -159,7 +159,7 @@ For security-sensitive environments that require private deployment of draw.io:
   "mcpServers": {
     "drawio": {
       "command": "npx",
-      "args": ["@next-ai-drawio/mcp-server@latest"],
+      "args": ["@genai-drawio-creator/mcp-server@latest"],
       "env": { 
         "DRAWIO_BASE_URL": "https://drawio.your-company.com"
       }
@@ -188,7 +188,7 @@ Or set a custom port:
   "mcpServers": {
     "drawio": {
       "command": "npx",
-      "args": ["@next-ai-drawio/mcp-server@latest"],
+      "args": ["@genai-drawio-creator/mcp-server@latest"],
       "env": { "PORT": "6003" }
     }
   }

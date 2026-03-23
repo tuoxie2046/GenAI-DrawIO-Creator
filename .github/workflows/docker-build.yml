@@ -87,6 +87,6 @@ jobs:
         run: |
           REPO_LOWER=$(echo "$REPO_LOWER" | tr '[:upper:]' '[:lower:]')
           docker pull ghcr.io/${REPO_LOWER}:latest
-          docker tag ghcr.io/${REPO_LOWER}:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-1.amazonaws.com/next-ai-draw-io:latest
-          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-1.amazonaws.com/next-ai-draw-io:latest
+          docker tag ghcr.io/${REPO_LOWER}:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-1.amazonaws.com/genai-drawio-creator:latest
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-1.amazonaws.com/genai-drawio-creator:latest
 

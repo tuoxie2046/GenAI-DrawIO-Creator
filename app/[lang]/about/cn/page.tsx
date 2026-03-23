@@ -4,7 +4,7 @@ import { FaGithub } from "react-icons/fa"
 import Image from "@/components/image-with-basepath"
 
 export const metadata: Metadata = {
-    title: "关于 - Next AI Draw.io",
+    title: "关于 - GenAI Drawio Creator",
     description:
         "AI驱动的图表创建工具 - 对话、绘制、可视化。使用自然语言创建AWS、GCP和Azure架构图。",
     keywords: ["AI图表", "draw.io", "AWS架构", "GCP图表", "Azure图表", "LLM"],
@@ -21,7 +21,7 @@ export default function AboutCN() {
                             href="/"
                             className="text-xl font-bold text-gray-900 hover:text-gray-700"
                         >
-                            Next AI Draw.io
+                            GenAI Drawio Creator
                         </Link>
                         <nav className="flex items-center gap-6 text-sm">
                             <Link
@@ -37,7 +37,7 @@ export default function AboutCN() {
                                 关于
                             </Link>
                             <a
-                                href="https://github.com/DayuanJiang/next-ai-draw-io"
+                                href="https://github.com/genai-drawio-creator/genai-drawio-creator"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-600 hover:text-gray-900 transition-colors"
@@ -56,64 +56,16 @@ export default function AboutCN() {
                     {/* Title */}
                     <div className="text-center mb-8">
                         <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                            Next AI Draw.io
+                            GenAI Drawio Creator
                         </h1>
                         <p className="text-xl text-gray-600 font-medium">
                             AI驱动的图表创建工具 - 对话、绘制、可视化
                         </p>
                     </div>
 
-                    <div className="relative mb-8 rounded-2xl bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 p-[1px] shadow-lg">
-                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-400 to-yellow-400 opacity-20" />
+                    <div className="relative mb-8 rounded-2xl bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-[1px] shadow-lg">
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-400 via-indigo-400 to-purple-400 opacity-20" />
                         <div className="relative rounded-2xl bg-white/80 backdrop-blur-sm p-6">
-                            {/* Header */}
-                            <div className="mb-4">
-                                <h3 className="text-lg font-bold text-gray-900 tracking-tight">
-                                    由字节跳动豆包提供支持
-                                </h3>
-                            </div>
-
-                            {/* Story */}
-                            <div className="space-y-3 text-sm text-gray-700 leading-relaxed mb-5">
-                                <p>
-                                    好消息！感谢{" "}
-                                    <a
-                                        href="https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="font-semibold text-blue-600 hover:underline"
-                                    >
-                                        字节跳动豆包
-                                    </a>
-                                    的慷慨赞助，演示站点现已接入强大的{" "}
-                                    <span className="font-semibold text-amber-700">
-                                        glm-4.7
-                                    </span>{" "}
-                                    模型，图表生成效果更佳！点击链接注册即可领取{" "}
-                                    <span className="font-semibold text-amber-700">
-                                        50万免费Token
-                                    </span>
-                                    ，适用于所有模型！
-                                </p>
-                            </div>
-
-                            {/* Invite Poster */}
-                            <div className="text-center mb-5">
-                                <a
-                                    href="https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <Image
-                                        src="/volcengine-invite.png"
-                                        alt="火山引擎方舟 Coding Plan"
-                                        width={300}
-                                        height={400}
-                                        className="mx-auto rounded-lg"
-                                    />
-                                </a>
-                            </div>
-
                             {/* Bring Your Own Key */}
                             <div className="text-center">
                                 <h4 className="text-base font-bold text-gray-900 mb-2">
@@ -292,16 +244,6 @@ export default function AboutCN() {
                         多提供商支持
                     </h2>
                     <ul className="list-disc pl-6 text-gray-700 space-y-1">
-                        <li>
-                            <a
-                                href="https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline"
-                            >
-                                字节跳动豆包
-                            </a>
-                        </li>
                         <li>AWS Bedrock（默认）</li>
                         <li>
                             OpenAI / OpenAI兼容API（通过{" "}
@@ -326,41 +268,17 @@ export default function AboutCN() {
                     <h2 className="text-2xl font-semibold text-gray-900 mt-10 mb-4">
                         支持与联系
                     </h2>
-                    <p className="text-gray-700 mb-4 font-semibold">
-                        特别感谢{" "}
-                        <a
-                            href="https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:underline"
-                        >
-                            字节跳动豆包
-                        </a>{" "}
-                        为本站提供 API Token 支持！
-                    </p>
                     <p className="text-gray-700">
-                        如果您觉得这个项目有用，请考虑{" "}
-                        <a
-                            href="https://github.com/sponsors/DayuanJiang"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:underline"
-                        >
-                            赞助
-                        </a>{" "}
-                        来帮助托管在线演示站点！
-                    </p>
-                    <p className="text-gray-700 mt-2">
                         如需支持或咨询，请在{" "}
                         <a
-                            href="https://github.com/DayuanJiang/next-ai-draw-io"
+                            href="https://github.com/genai-drawio-creator/genai-drawio-creator"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600 hover:underline"
                         >
                             GitHub仓库
                         </a>{" "}
-                        上提交issue或联系：me[at]jiang.jp
+                        上提交issue。
                     </p>
 
                     {/* CTA */}
@@ -379,7 +297,7 @@ export default function AboutCN() {
             <footer className="bg-white border-t border-gray-200 mt-16">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                     <p className="text-center text-gray-600 text-sm">
-                        Next AI Draw.io - 开源AI驱动的图表生成器
+                        GenAI Drawio Creator - 开源AI驱动的图表生成器
                     </p>
                 </div>
             </footer>

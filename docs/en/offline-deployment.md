@@ -1,6 +1,6 @@
 # Offline Deployment
 
-Deploy Next AI Draw.io offline by self-hosting draw.io to replace `embed.diagrams.net`.
+Deploy GenAI Drawio Creator offline by self-hosting draw.io to replace `embed.diagrams.net`.
 
 **Note:** `NEXT_PUBLIC_DRAWIO_BASE_URL` is a **build-time** variable. Changing it requires rebuilding the Docker image.
 
@@ -14,7 +14,7 @@ services:
   drawio:
     image: jgraph/drawio:latest
     ports: ["8080:8080"]
-  next-ai-draw-io:
+  genai-drawio-creator:
     build:
       context: .
       args:

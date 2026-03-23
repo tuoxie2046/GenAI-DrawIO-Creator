@@ -160,7 +160,7 @@ function getMenuTemplate(): MenuItemConstructorOptions[] {
                 label: t.documentation,
                 click: async () => {
                     await shell.openExternal(
-                        "https://github.com/dayuanjiang/next-ai-draw-io",
+                        "https://github.com/dayuanjiang/genai-drawio-creator",
                     )
                 },
             },
@@ -168,7 +168,7 @@ function getMenuTemplate(): MenuItemConstructorOptions[] {
                 label: t.reportIssue,
                 click: async () => {
                     await shell.openExternal(
-                        "https://github.com/dayuanjiang/next-ai-draw-io/issues",
+                        "https://github.com/dayuanjiang/genai-drawio-creator/issues",
                     )
                 },
             },

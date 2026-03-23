@@ -3,31 +3,31 @@
 
 export const STORAGE_KEYS = {
     // Quota tracking
-    requestCount: "next-ai-draw-io-request-count",
-    requestDate: "next-ai-draw-io-request-date",
-    tokenCount: "next-ai-draw-io-token-count",
-    tokenDate: "next-ai-draw-io-token-date",
-    tpmCount: "next-ai-draw-io-tpm-count",
-    tpmMinute: "next-ai-draw-io-tpm-minute",
+    requestCount: "genai-drawio-creator-request-count",
+    requestDate: "genai-drawio-creator-request-date",
+    tokenCount: "genai-drawio-creator-token-count",
+    tokenDate: "genai-drawio-creator-token-date",
+    tpmCount: "genai-drawio-creator-tpm-count",
+    tpmMinute: "genai-drawio-creator-tpm-minute",
 
     // Settings
-    accessCode: "next-ai-draw-io-access-code",
-    accessCodeRequired: "next-ai-draw-io-access-code-required",
-    aiProvider: "next-ai-draw-io-ai-provider",
-    aiBaseUrl: "next-ai-draw-io-ai-base-url",
-    aiApiKey: "next-ai-draw-io-ai-api-key",
-    aiModel: "next-ai-draw-io-ai-model",
+    accessCode: "genai-drawio-creator-access-code",
+    accessCodeRequired: "genai-drawio-creator-access-code-required",
+    aiProvider: "genai-drawio-creator-ai-provider",
+    aiBaseUrl: "genai-drawio-creator-ai-base-url",
+    aiApiKey: "genai-drawio-creator-ai-api-key",
+    aiModel: "genai-drawio-creator-ai-model",
 
     // Multi-model configuration
-    modelConfigs: "next-ai-draw-io-model-configs",
-    selectedModelId: "next-ai-draw-io-selected-model-id",
+    modelConfigs: "genai-drawio-creator-model-configs",
+    selectedModelId: "genai-drawio-creator-selected-model-id",
 
     // Chat input preferences
-    sendShortcut: "next-ai-draw-io-send-shortcut",
+    sendShortcut: "genai-drawio-creator-send-shortcut",
 
     // Diagram validation
-    vlmValidationEnabled: "next-ai-draw-io-vlm-validation-enabled",
+    vlmValidationEnabled: "genai-drawio-creator-vlm-validation-enabled",
 
     // Custom system message
-    customSystemMessage: "next-ai-draw-io-custom-system-message",
+    customSystemMessage: "genai-drawio-creator-custom-system-message",
 } as const

@@ -2,10 +2,10 @@ import { type DBSchema, type IDBPDatabase, openDB } from "idb"
 import { nanoid } from "nanoid"
 
 // Constants
-const DB_NAME = "next-ai-drawio"
+const DB_NAME = "genai-drawio-creator"
 const DB_VERSION = 1
 const STORE_NAME = "sessions"
-const MIGRATION_FLAG = "next-ai-drawio-migrated-to-idb"
+const MIGRATION_FLAG = "genai-drawio-creator-migrated-to-idb"
 const MAX_SESSIONS = 50
 
 // Types
@@ -275,11 +275,15 @@ export async function migrateFromLocalStorage(): Promise<string | null> {
     if (localStorage.getItem(MIGRATION_FLAG)) return null
 
     try {
-        const savedMessages = localStorage.getItem("next-ai-draw-io-messages")
-        const savedSnapshots = localStorage.getItem(
-            "next-ai-draw-io-xml-snapshots",
+        const savedMessages = localStorage.getItem(
+            "genai-drawio-creator-messages",
         )
-        const savedXml = localStorage.getItem("next-ai-draw-io-diagram-xml")
+        const savedSnapshots = localStorage.getItem(
+            "genai-drawio-creator-xml-snapshots",
+        )
+        const savedXml = localStorage.getItem(
+            "genai-drawio-creator-diagram-xml",
+        )
 
         let newSessionId: string | null = null
         let migrationSucceeded = false
@@ -320,9 +324,9 @@ export async function migrateFromLocalStorage(): Promise<string | null> {
         // Only clean up old data if migration succeeded
         if (migrationSucceeded) {
             localStorage.setItem(MIGRATION_FLAG, "true")
-            localStorage.removeItem("next-ai-draw-io-messages")
-            localStorage.removeItem("next-ai-draw-io-xml-snapshots")
-            localStorage.removeItem("next-ai-draw-io-diagram-xml")
+            localStorage.removeItem("genai-drawio-creator-messages")
+            localStorage.removeItem("genai-drawio-creator-xml-snapshots")
+            localStorage.removeItem("genai-drawio-creator-diagram-xml")
         } else {
             console.warn(
                 "Migration to IndexedDB failed - keeping localStorage data for retry",

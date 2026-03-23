@@ -4,7 +4,7 @@ import { FaGithub } from "react-icons/fa"
 import Image from "@/components/image-with-basepath"
 
 export const metadata: Metadata = {
-    title: "概要 - Next AI Draw.io",
+    title: "概要 - GenAI Drawio Creator",
     description:
         "AI搭載のダイアグラム作成ツール - チャット、描画、可視化。自然言語でAWS、GCP、Azureアーキテクチャ図を作成。",
     keywords: [
@@ -28,7 +28,7 @@ export default function AboutJA() {
                             href="/"
                             className="text-xl font-bold text-gray-900 hover:text-gray-700"
                         >
-                            Next AI Draw.io
+                            GenAI Drawio Creator
                         </Link>
                         <nav className="flex items-center gap-6 text-sm">
                             <Link
@@ -44,7 +44,7 @@ export default function AboutJA() {
                                 概要
                             </Link>
                             <a
-                                href="https://github.com/DayuanJiang/next-ai-draw-io"
+                                href="https://github.com/genai-drawio-creator/genai-drawio-creator"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-600 hover:text-gray-900 transition-colors"
@@ -63,7 +63,7 @@ export default function AboutJA() {
                     {/* Title */}
                     <div className="text-center mb-8">
                         <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                            Next AI Draw.io
+                            GenAI Drawio Creator
                         </h1>
                         <p className="text-xl text-gray-600 font-medium">
                             AI搭載のダイアグラム作成ツール -
@@ -71,40 +71,9 @@ export default function AboutJA() {
                         </p>
                     </div>
 
-                    <div className="relative mb-8 rounded-2xl bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 p-[1px] shadow-lg">
-                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-400 to-yellow-400 opacity-20" />
+                    <div className="relative mb-8 rounded-2xl bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-[1px] shadow-lg">
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-400 via-indigo-400 to-purple-400 opacity-20" />
                         <div className="relative rounded-2xl bg-white/80 backdrop-blur-sm p-6">
-                            {/* Header */}
-                            <div className="mb-4">
-                                <h3 className="text-lg font-bold text-gray-900 tracking-tight">
-                                    ByteDance Doubao提供
-                                </h3>
-                            </div>
-
-                            {/* Story */}
-                            <div className="space-y-3 text-sm text-gray-700 leading-relaxed mb-5">
-                                <p>
-                                    朗報です！
-                                    <a
-                                        href="https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="font-semibold text-blue-600 hover:underline"
-                                    >
-                                        ByteDance Doubao
-                                    </a>
-                                    様のご支援により、デモサイトでは強力な{" "}
-                                    <span className="font-semibold text-amber-700">
-                                        glm-4.7
-                                    </span>{" "}
-                                    モデルを利用できるようになり、より高品質なダイアグラム生成が可能になりました。リンクから登録すると、すべてのモデルで使える{" "}
-                                    <span className="font-semibold text-amber-700">
-                                        50万トークン
-                                    </span>
-                                    が無料でもらえます！
-                                </p>
-                            </div>
-
                             {/* Bring Your Own Key */}
                             <div className="text-center">
                                 <h4 className="text-base font-bold text-gray-900 mb-2">
@@ -290,16 +259,6 @@ export default function AboutJA() {
                         マルチプロバイダーサポート
                     </h2>
                     <ul className="list-disc pl-6 text-gray-700 space-y-1">
-                        <li>
-                            <a
-                                href="https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline"
-                            >
-                                ByteDance Doubao
-                            </a>
-                        </li>
                         <li>AWS Bedrock（デフォルト）</li>
                         <li>
                             OpenAI / OpenAI互換API（<code>OPENAI_BASE_URL</code>
@@ -324,41 +283,17 @@ export default function AboutJA() {
                     <h2 className="text-2xl font-semibold text-gray-900 mt-10 mb-4">
                         サポート＆お問い合わせ
                     </h2>
-                    <p className="text-gray-700 mb-4 font-semibold">
-                        デモサイトのAPIトークン使用を支援してくださった{" "}
-                        <a
-                            href="https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:underline"
-                        >
-                            ByteDance Doubao
-                        </a>{" "}
-                        様に、心より感謝申し上げます。
-                    </p>
                     <p className="text-gray-700">
-                        このプロジェクトが役に立ったら、ライブデモサイトのホスティングを支援するために{" "}
-                        <a
-                            href="https://github.com/sponsors/DayuanJiang"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:underline"
-                        >
-                            スポンサー
-                        </a>{" "}
-                        をご検討ください！
-                    </p>
-                    <p className="text-gray-700 mt-2">
                         サポートやお問い合わせについては、{" "}
                         <a
-                            href="https://github.com/DayuanJiang/next-ai-draw-io"
+                            href="https://github.com/genai-drawio-creator/genai-drawio-creator"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600 hover:underline"
                         >
                             GitHubリポジトリ
                         </a>{" "}
-                        でissueを開くか、ご連絡ください：me[at]jiang.jp
+                        でissueを開いてください。
                     </p>
 
                     {/* CTA */}
@@ -377,7 +312,7 @@ export default function AboutJA() {
             <footer className="bg-white border-t border-gray-200 mt-16">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                     <p className="text-center text-gray-600 text-sm">
-                        Next AI Draw.io -
+                        GenAI Drawio Creator -
                         オープンソースAI搭載ダイアグラムジェネレーター
                     </p>
                 </div>

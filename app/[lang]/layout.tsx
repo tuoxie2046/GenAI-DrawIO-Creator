@@ -47,10 +47,10 @@ export async function generateMetadata({
 
     // Default to English metadata
     const titles: Record<Locale, string> = {
-        en: "Next AI Draw.io - AI-Powered Diagram Generator",
-        zh: "Next AI Draw.io - AI powered diagram generator",
-        ja: "Next AI Draw.io - AI-powered diagram generator",
-        "zh-Hant": "Next AI Draw.io - AI 驅動的圖表產生器",
+        en: "GenAI Drawio Creator - AI-Powered Diagram Generator",
+        zh: "GenAI Drawio Creator - AI powered diagram generator",
+        ja: "GenAI Drawio Creator - AI-powered diagram generator",
+        "zh-Hant": "GenAI Drawio Creator - AI 驅動的圖表產生器",
     }
 
     const descriptions: Record<Locale, string> = {
@@ -75,16 +75,16 @@ export async function generateMetadata({
             "free diagram generator",
             "online diagram maker",
         ],
-        authors: [{ name: "Next AI Draw.io" }],
-        creator: "Next AI Draw.io",
-        publisher: "Next AI Draw.io",
-        metadataBase: new URL("https://next-ai-drawio.jiang.jp"),
+        authors: [{ name: "GenAI Drawio Creator" }],
+        creator: "GenAI Drawio Creator",
+        publisher: "GenAI Drawio Creator",
+        metadataBase: new URL("https://localhost:6002"),
         openGraph: {
             title: titles[lang],
             description: descriptions[lang],
             type: "website",
-            url: "https://next-ai-drawio.jiang.jp",
-            siteName: "Next AI Draw.io",
+            url: "https://localhost:6002",
+            siteName: "GenAI Drawio Creator",
             locale:
                 lang === "zh"
                     ? "zh_CN"
@@ -98,7 +98,7 @@ export async function generateMetadata({
                     url: "/architecture.png",
                     width: 1200,
                     height: 630,
-                    alt: "Next AI Draw.io - AI-powered diagram creation tool",
+                    alt: "GenAI Drawio Creator - AI-powered diagram creation tool",
                 },
             ],
         },
@@ -148,12 +148,12 @@ export default async function RootLayout({
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        name: "Next AI Draw.io",
+        name: "GenAI Drawio Creator",
         applicationCategory: "DesignApplication",
         operatingSystem: "Web Browser",
         description:
             "AI-powered diagram generator with targeted XML editing capabilities that integrates with draw.io for creating AWS architecture diagrams, flowcharts, and technical diagrams. Features diagram history, multi-provider AI support, and real-time collaboration.",
-        url: "https://next-ai-drawio.jiang.jp",
+        url: "https://localhost:6002",
         inLanguage: validLang,
         offers: {
             "@type": "Offer",

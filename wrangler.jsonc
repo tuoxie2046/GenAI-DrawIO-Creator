@@ -1,7 +1,7 @@
 {
     "$schema": "node_modules/wrangler/config-schema.json",
     "main": ".open-next/worker.js",
-    "name": "next-ai-draw-io-worker",
+    "name": "genai-drawio-creator-worker",
     "compatibility_date": "2025-12-08", // must be a today or past compatibility_date
     "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
     "assets": {
@@ -17,7 +17,7 @@
     "services": [
         {
             "binding": "WORKER_SELF_REFERENCE",
-            "service": "next-ai-draw-io-worker"
+            "service": "genai-drawio-creator-worker"
         }
     ]
 }

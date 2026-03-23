@@ -11,7 +11,7 @@ docker run -d -p 3000:3000 \
   -e AI_PROVIDER=openai \
   -e AI_MODEL=gpt-4o \
   -e OPENAI_API_KEY=your_api_key \
-  ghcr.io/dayuanjiang/next-ai-draw-io:latest
+  ghcr.io/dayuanjiang/genai-drawio-creator:latest
 ```
 
 Or use an env file:
@@ -19,7 +19,7 @@ Or use an env file:
 ```bash
 cp env.example .env
 # Edit .env with your configuration
-docker run -d -p 3000:3000 --env-file .env ghcr.io/dayuanjiang/next-ai-draw-io:latest
+docker run -d -p 3000:3000 --env-file .env ghcr.io/dayuanjiang/genai-drawio-creator:latest
 ```
 
 ### Using server-side model configuration
@@ -30,7 +30,7 @@ You can mount an `ai-models.json` file into the container to provide multiple se
 docker run -d -p 3000:3000 \
   -e OPENAI_API_KEY=your_api_key \
   -v $(pwd)/ai-models.json:/app/ai-models.json:ro \
-  ghcr.io/dayuanjiang/next-ai-draw-io:latest
+  ghcr.io/dayuanjiang/genai-drawio-creator:latest
 ```
 
 If you prefer to keep the config in a different path inside the container, set `AI_MODELS_CONFIG_PATH`:
@@ -40,7 +40,7 @@ docker run -d -p 3000:3000 \
   -e OPENAI_API_KEY=your_api_key \
   -e AI_MODELS_CONFIG_PATH=/config/ai-models.json \
   -v $(pwd)/ai-models.json:/config/ai-models.json:ro \
-  ghcr.io/dayuanjiang/next-ai-draw-io:latest
+  ghcr.io/dayuanjiang/genai-drawio-creator:latest
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.

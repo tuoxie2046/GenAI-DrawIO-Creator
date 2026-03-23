@@ -11,7 +11,7 @@ docker run -d -p 3000:3000 \
   -e AI_PROVIDER=openai \
   -e AI_MODEL=gpt-4o \
   -e OPENAI_API_KEY=your_api_key \
-  ghcr.io/dayuanjiang/next-ai-draw-io:latest
+  ghcr.io/dayuanjiang/genai-drawio-creator:latest
 ```
 
 または、envファイルを使用します。
@@ -19,7 +19,7 @@ docker run -d -p 3000:3000 \
 ```bash
 cp env.example .env
 # .envを構成に合わせて編集します
-docker run -d -p 3000:3000 --env-file .env ghcr.io/dayuanjiang/next-ai-draw-io:latest
+docker run -d -p 3000:3000 --env-file .env ghcr.io/dayuanjiang/genai-drawio-creator:latest
 ```
 
 ブラウザで[http://localhost:3000](http://localhost:3000)を開きます。

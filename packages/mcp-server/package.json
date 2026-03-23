@@ -1,11 +1,11 @@
 {
-    "name": "@next-ai-drawio/mcp-server",
+    "name": "@genai-drawio-creator/mcp-server",
     "version": "0.1.16",
-    "description": "MCP server for Next AI Draw.io - AI-powered diagram generation with real-time browser preview",
+    "description": "MCP server for GenAI Drawio Creator - AI-powered diagram generation with real-time browser preview",
     "type": "module",
     "main": "dist/index.js",
     "bin": {
-        "next-ai-drawio-mcp": "./dist/index.js"
+        "genai-drawio-creator-mcp": "./dist/index.js"
     },
     "scripts": {
         "build": "tsc",
@@ -21,16 +21,15 @@
         "claude",
         "model-context-protocol"
     ],
-    "author": "DayuanJiang",
+    "author": "",
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/DayuanJiang/next-ai-draw-io",
+        "url": "https://github.com/genai-drawio-creator/genai-drawio-creator",
         "directory": "packages/mcp-server"
     },
-    "homepage": "https://next-ai-drawio.jiang.jp",
     "bugs": {
-        "url": "https://github.com/DayuanJiang/next-ai-draw-io/issues"
+        "url": "https://github.com/genai-drawio-creator/genai-drawio-creator/issues"
     },
     "publishConfig": {
         "access": "public"

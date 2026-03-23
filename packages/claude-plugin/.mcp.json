@@ -2,7 +2,7 @@
     "mcpServers": {
         "drawio": {
             "command": "npx",
-            "args": ["@next-ai-drawio/mcp-server@latest"]
+            "args": ["@genai-drawio-creator/mcp-server@latest"]
         }
     }
 }

@@ -1,11 +1,8 @@
 {
-    "name": "next-ai-drawio",
+    "name": "genai-drawio-creator",
     "version": "1.0.0",
     "description": "AI-powered Draw.io diagram generation with real-time browser preview. Create flowcharts, architecture diagrams, and more through natural language.",
-    "author": {
-        "name": "DayuanJiang"
-    },
-    "repository": "https://github.com/DayuanJiang/next-ai-draw-io",
-    "homepage": "https://next-ai-drawio.jiang.jp",
+    "author": {},
+    "repository": "https://github.com/genai-drawio-creator/genai-drawio-creator",
     "license": "Apache-2.0"
 }

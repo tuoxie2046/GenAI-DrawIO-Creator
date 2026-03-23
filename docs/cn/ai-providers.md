@@ -1,6 +1,6 @@
 # AI 提供商配置
 
-本指南介绍如何为 next-ai-draw-io 配置不同的 AI 模型提供商。
+本指南介绍如何为 genai-drawio-creator 配置不同的 AI 模型提供商。
 
 ## 快速开始
 
@@ -10,15 +10,6 @@
 4. 运行 `npm run dev`
 
 ## 支持的提供商
-
-### 豆包 (字节跳动火山引擎)
-
-> **免费 Token**：在 [火山引擎 ARK 平台](https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio) 注册，即可获得所有模型 50 万免费 Token！
-
-```bash
-DOUBAO_API_KEY=your_api_key
-AI_MODEL=doubao-seed-1-8-251215  # 或其他豆包模型
-```
 
 ### Google Gemini
 

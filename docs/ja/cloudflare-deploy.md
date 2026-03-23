@@ -86,7 +86,7 @@ export default defineCloudflareConfig({})
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
-  "name": "next-ai-draw-io-worker",
+  "name": "genai-drawio-creator-worker",
   "compatibility_date": "2025-12-08",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
@@ -96,7 +96,7 @@ export default defineCloudflareConfig({})
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "next-ai-draw-io-worker"
+      "service": "genai-drawio-creator-worker"
     }
   ]
 }
@@ -133,7 +133,7 @@ export default defineCloudflareConfig({
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
-  "name": "next-ai-draw-io-worker",
+  "name": "genai-drawio-creator-worker",
   "compatibility_date": "2025-12-08",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
@@ -149,7 +149,7 @@ export default defineCloudflareConfig({
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "next-ai-draw-io-worker"
+      "service": "genai-drawio-creator-worker"
     }
   ]
 }

@@ -3,8 +3,8 @@
 ## Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/next-ai-draw-io.git
-cd next-ai-draw-io
+git clone https://github.com/YOUR_USERNAME/genai-drawio-creator.git
+cd genai-drawio-creator
 npm install
 cp env.example .env.local
 npm run dev

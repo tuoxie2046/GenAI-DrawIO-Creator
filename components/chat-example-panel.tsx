@@ -127,7 +127,7 @@ export default function ExamplePanel({
                 <>
                     {/* MCP Server Notice */}
                     <a
-                        href="https://github.com/DayuanJiang/next-ai-draw-io/tree/main/packages/mcp-server"
+                        href="https://github.com/genai-drawio-creator/genai-drawio-creator/tree/main/packages/mcp-server"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block mb-4 p-3 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 hover:border-purple-500/40 transition-colors group"

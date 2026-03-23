@@ -1,4 +1,4 @@
-# Next AI Draw.io - Claude Code Plugin
+# GenAI Drawio Creator - Claude Code Plugin
 
 AI-powered Draw.io diagram generation with real-time browser preview for Claude Code.
 
@@ -8,7 +8,7 @@ AI-powered Draw.io diagram generation with real-time browser preview for Claude 
 
 Once approved, install via:
 ```
-/plugin install next-ai-drawio
+/plugin install genai-drawio-creator
 ```
 
 ### Manual Installation
@@ -19,7 +19,7 @@ claude --plugin-dir /path/to/packages/claude-plugin
 
 Or add the MCP server directly:
 ```bash
-claude mcp add drawio -- npx @next-ai-drawio/mcp-server@latest
+claude mcp add drawio -- npx @genai-drawio-creator/mcp-server@latest
 ```
 
 ## Features
@@ -98,9 +98,8 @@ Claude Code <--stdio--> MCP Server <--http--> Browser (draw.io)
 
 ## Links
 
-- [Homepage](https://next-ai-drawio.jiang.jp)
-- [GitHub Repository](https://github.com/DayuanJiang/next-ai-draw-io)
-- [MCP Server Documentation](https://github.com/DayuanJiang/next-ai-draw-io/tree/main/packages/mcp-server)
+- [GitHub Repository](https://github.com/genai-drawio-creator/genai-drawio-creator)
+- [MCP Server Documentation](https://github.com/genai-drawio-creator/genai-drawio-creator/tree/main/packages/mcp-server)
 
 ## License
 

@@ -1,4 +1,4 @@
-# Next AI Draw.io
+# GenAI Drawio Creator
 
 <div align="center">
 
@@ -6,28 +6,17 @@
 
 English | [中文](./docs/cn/README_CN.md) | [日本語](./docs/ja/README_JA.md)
 
-[![TrendShift](https://trendshift.io/api/badge/repositories/15449)](https://next-ai-drawio.jiang.jp/)
-
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Next.js](https://img.shields.io/badge/Next.js-16.x-black)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.x-61dafb)](https://react.dev/)
-[![Sponsor](https://img.shields.io/badge/Sponsor-❤-ea4aaa)](https://github.com/sponsors/DayuanJiang)
-
-[![Live Demo](./public/live-demo-button.svg)](https://next-ai-drawio.jiang.jp/)
 
 </div>
 
 A Next.js web application that integrates AI capabilities with draw.io diagrams. Create, modify, and enhance diagrams through natural language commands and AI-assisted visualization.
 
-> Note: Thanks to <img src="https://raw.githubusercontent.com/DayuanJiang/next-ai-draw-io/main/public/doubao-color.png" alt="" height="20" /> [ByteDance Doubao](https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio) sponsorship, the demo site now uses the powerful glm-4.7 model!
-
-
-https://github.com/user-attachments/assets/9d60a3e8-4a1c-4b5e-acbb-26af2d3eabd1
-
-
 
 ## Table of Contents
-- [Next AI Draw.io](#next-ai-drawio)
+- [GenAI Drawio Creator](#genai-drawio-creator)
   - [Table of Contents](#table-of-contents)
   - [Examples](#examples)
   - [Features](#features)
@@ -103,14 +92,14 @@ Here are some example prompts and their generated diagrams:
 
 > **Preview Feature**: This feature is experimental and may not be stable.
 
-Use Next AI Draw.io with AI agents like Claude Desktop, Cursor, and VS Code via MCP (Model Context Protocol).
+Use GenAI Drawio Creator with AI agents like Claude Desktop, Cursor, and VS Code via MCP (Model Context Protocol).
 
 ```json
 {
   "mcpServers": {
     "drawio": {
       "command": "npx",
-      "args": ["@next-ai-drawio/mcp-server@latest"]
+      "args": ["@genai-drawio-creator/mcp-server@latest"]
     }
   }
 }
@@ -119,7 +108,7 @@ Use Next AI Draw.io with AI agents like Claude Desktop, Cursor, and VS Code via 
 ### Claude Code CLI
 
 ```bash
-claude mcp add drawio -- npx @next-ai-drawio/mcp-server@latest
+claude mcp add drawio -- npx @genai-drawio-creator/mcp-server@latest
 ```
 
 Then ask Claude to create diagrams:
@@ -133,17 +122,13 @@ See the [MCP Server README](./packages/mcp-server/README.md) for VS Code, Cursor
 
 ### Try it Online
 
-No installation needed! Try the app directly on our demo site:
-
-[![Live Demo](./public/live-demo-button.svg)](https://next-ai-drawio.jiang.jp/)
-
-
+No installation needed! Try the app directly on our demo site.
 
 > **Bring Your Own API Key**: You can use your own API key to bypass usage limits on the demo site. Click the Settings icon in the chat panel to configure your provider and API key. Your key is stored locally in your browser and is never stored on the server.
 
 ### Desktop Application
 
-Download the native desktop app for your platform from the [Releases page](https://github.com/DayuanJiang/next-ai-draw-io/releases):
+Download the native desktop app for your platform from the [Releases page](https://github.com/genai-drawio-creator/genai-drawio-creator/releases):
 
 Supported platforms: Windows, macOS, Linux.
 
@@ -156,8 +141,8 @@ Supported platforms: Windows, macOS, Linux.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/DayuanJiang/next-ai-draw-io
-cd next-ai-draw-io
+git clone https://github.com/genai-drawio-creator/genai-drawio-creator
+cd genai-drawio-creator
 npm install
 cp env.example .env.local
 ```
@@ -180,7 +165,7 @@ You can deploy with one click using [Tencent EdgeOne Pages](https://pages.edgeon
 
 Deploy by this button: 
 
-[![Deploy to EdgeOne Pages](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://edgeone.ai/pages/new?repository-url=https%3A%2F%2Fgithub.com%2FDayuanJiang%2Fnext-ai-draw-io)
+[![Deploy to EdgeOne Pages](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://edgeone.ai/pages/new?repository-url=https%3A%2F%2Fgithub.com%2Fgenai-drawio-creator%2Fgenai-drawio-creator)
 
 Check out the [Tencent EdgeOne Pages documentation](https://pages.edgeone.ai/document/deployment-overview) for more details.
 
@@ -188,7 +173,7 @@ Additionally, deploying through Tencent EdgeOne Pages will also grant you a [dai
 
 ### Deploy on Vercel 
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FDayuanJiang%2Fnext-ai-draw-io)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgenai-drawio-creator%2Fgenai-drawio-creator)
 
 The easiest way to deploy is using [Vercel](https://vercel.com/new), the creators of Next.js. Be sure to **set the environment variables** in the Vercel dashboard as you did in your local `.env.local` file.
 
@@ -202,7 +187,6 @@ See the [Next.js deployment documentation](https://nextjs.org/docs/app/building-
 
 ## Multi-Provider Support
 
--   [ByteDance Doubao](https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio)
 -   AWS Bedrock (default)
 -   OpenAI
 -   Anthropic
@@ -244,20 +228,36 @@ Diagrams are represented as XML that can be rendered in draw.io. The AI processe
 
 ## Support & Contact
 
-**Special thanks to [ByteDance Doubao](https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio) for sponsoring the API token usage of the demo site!** Register on the ARK platform to get 500K free tokens for all models!
+For support or inquiries, please open an issue on the GitHub repository.
 
-If you find this project useful, please consider [sponsoring](https://github.com/sponsors/DayuanJiang) to help me host the live demo site!
+## Citation
 
-For support or inquiries, please open an issue on the GitHub repository or contact the maintainer at:
+If you use GenAI Drawio Creator in your research, please cite the following papers:
 
--   Email: me[at]jiang.jp
+```bibtex
+@article{yu2025genai,
+  title={GenAI-DrawIO-Creator: A Framework for Automated Diagram Generation},
+  author={Jinze Yu and Dayuan Jiang},
+  journal={arXiv preprint arXiv:2601.05162},
+  year={2025}
+}
+```
+
+```bibtex
+@inproceedings{yu2025genai-kdd,
+  title={GenAI-DrawIO-Creator: A Framework for Automated Diagram Generation},
+  author={Jinze Yu and Dayuan Jiang and others},
+  booktitle={KDD 2025 Workshop on Scientific and Societal Advances enabled by Large Language Models (SciSocLLM)},
+  year={2025},
+  url={https://openreview.net/forum?id=mZEJWVDUtt}
+}
+```
+
+- Jinze Yu, Dayuan Jiang. *GenAI-DrawIO-Creator: A Framework for Automated Diagram Generation*. [arXiv:2601.05162](https://arxiv.org/abs/2601.05162), 2025.
+- Jinze Yu, Dayuan Jiang, et al. *GenAI-DrawIO-Creator: A Framework for Automated Diagram Generation*. KDD 2025 Workshop SciSocLLM. [OpenReview](https://openreview.net/forum?id=mZEJWVDUtt), 2025.
 
 ## FAQ
 
 See [FAQ](./docs/en/FAQ.md) for common issues and solutions.
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=DayuanJiang/next-ai-draw-io&type=date&legend=top-left)](https://www.star-history.com/#DayuanJiang/next-ai-draw-io&type=date&legend=top-left)
 
 ---

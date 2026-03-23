@@ -11,7 +11,7 @@ docker run -d -p 3000:3000 \
   -e AI_PROVIDER=openai \
   -e AI_MODEL=gpt-4o \
   -e OPENAI_API_KEY=your_api_key \
-  ghcr.io/dayuanjiang/next-ai-draw-io:latest
+  ghcr.io/dayuanjiang/genai-drawio-creator:latest
 ```
 
 或者使用环境变量文件：
@@ -19,7 +19,7 @@ docker run -d -p 3000:3000 \
 ```bash
 cp env.example .env
 # 编辑 .env 文件并填入您的配置
-docker run -d -p 3000:3000 --env-file .env ghcr.io/dayuanjiang/next-ai-draw-io:latest
+docker run -d -p 3000:3000 --env-file .env ghcr.io/dayuanjiang/genai-drawio-creator:latest
 ```
 
 在浏览器中打开 [http://localhost:3000](http://localhost:3000)。

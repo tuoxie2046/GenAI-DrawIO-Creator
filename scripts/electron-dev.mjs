@@ -26,7 +26,7 @@ const NEXT_URL = `http://localhost:${NEXT_PORT}`
  * Get the user data path (same as Electron's app.getPath("userData"))
  */
 function getUserDataPath() {
-    const appName = "next-ai-draw-io"
+    const appName = "genai-drawio-creator"
     switch (process.platform) {
         case "darwin":
             return path.join(

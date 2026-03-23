@@ -1,6 +1,6 @@
 # AIプロバイダーの設定
 
-このガイドでは、next-ai-draw-io でさまざまな AI モデルプロバイダーを設定する方法について説明します。
+このガイドでは、genai-drawio-creator でさまざまな AI モデルプロバイダーを設定する方法について説明します。
 
 ## クイックスタート
 
@@ -10,15 +10,6 @@
 4. `npm run dev` を実行します
 
 ## 対応プロバイダー
-
-### Doubao (ByteDance Volcengine)
-
-> **無料トークン**: [Volcengine ARK プラットフォーム](https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio)に登録すると、すべてのモデルで使える50万トークンが無料で入手できます！
-
-```bash
-DOUBAO_API_KEY=your_api_key
-AI_MODEL=doubao-seed-1-8-251215  # または他の Doubao モデル
-```
 
 ### Google Gemini
 

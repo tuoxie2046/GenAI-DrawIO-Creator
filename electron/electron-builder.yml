@@ -1,6 +1,6 @@
 appId: com.nextaidrawio.app
-productName: Next AI Draw.io
-copyright: Copyright © 2024 Next AI Draw.io
+productName: GenAI Drawio Creator
+copyright: Copyright © 2024 GenAI Drawio Creator
 electronVersion: 39.2.7
 
 directories:
@@ -85,7 +85,7 @@ nsis:
 linux:
   icon: resources/icon.png
   category: Office
-  maintainer: Next AI Draw.io <nextaidrawio@users.noreply.github.com>
+  maintainer: GenAI Drawio Creator <nextaidrawio@users.noreply.github.com>
   target:
     - target: AppImage
       arch:

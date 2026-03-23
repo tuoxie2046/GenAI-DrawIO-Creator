@@ -1,4 +1,4 @@
-# Next AI Draw.io
+# GenAI Drawio Creator
 
 <div align="center">
 
@@ -6,27 +6,17 @@
 
 [English](../../README.md) | 中文 | [日本語](../ja/README_JA.md)
 
-[![TrendShift](https://trendshift.io/api/badge/repositories/15449)](https://next-ai-drawio.jiang.jp/)
-
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Next.js](https://img.shields.io/badge/Next.js-16.x-black)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.x-61dafb)](https://react.dev/)
-[![Sponsor](https://img.shields.io/badge/Sponsor-❤-ea4aaa)](https://github.com/sponsors/DayuanJiang)
-
-[![Live Demo](../../public/live-demo-button.svg)](https://next-ai-drawio.jiang.jp/)
 
 </div>
 
 一个集成了AI功能的Next.js网页应用，与draw.io图表无缝结合。通过自然语言命令和AI辅助可视化来创建、修改和增强图表。
 
-> 注：感谢 <img src="https://raw.githubusercontent.com/DayuanJiang/next-ai-draw-io/main/public/doubao-color.png" alt="" height="20" /> [字节跳动豆包](https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio) 的赞助支持，本项目的 Demo 现已接入强大的 glm-4.7 模型！
-
-<a href="https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio" target="_blank"><img src="../../public/volcengine-invite.png" alt="火山引擎方舟 Coding Plan" width="300" /></a>
-
-https://github.com/user-attachments/assets/b2eef5f3-b335-4e71-a755-dc2e80931979
 
 ## 目录
-- [Next AI Draw.io](#next-ai-drawio)
+- [GenAI Drawio Creator](#genai-drawio-creator)
   - [目录](#目录)
   - [示例](#示例)
   - [功能特性](#功能特性)
@@ -102,14 +92,14 @@ https://github.com/user-attachments/assets/b2eef5f3-b335-4e71-a755-dc2e80931979
 
 > **预览功能**：此功能为实验性功能，可能不稳定。
 
-通过MCP（模型上下文协议）在Claude Desktop、Cursor和VS Code等AI代理中使用Next AI Draw.io。
+通过MCP（模型上下文协议）在Claude Desktop、Cursor和VS Code等AI代理中使用GenAI Drawio Creator。
 
 ```json
 {
   "mcpServers": {
     "drawio": {
       "command": "npx",
-      "args": ["@next-ai-drawio/mcp-server@latest"]
+      "args": ["@genai-drawio-creator/mcp-server@latest"]
     }
   }
 }
@@ -118,7 +108,7 @@ https://github.com/user-attachments/assets/b2eef5f3-b335-4e71-a755-dc2e80931979
 ### Claude Code CLI
 
 ```bash
-claude mcp add drawio -- npx @next-ai-drawio/mcp-server@latest
+claude mcp add drawio -- npx @genai-drawio-creator/mcp-server@latest
 ```
 
 然后让Claude创建图表：
@@ -134,13 +124,11 @@ claude mcp add drawio -- npx @next-ai-drawio/mcp-server@latest
 
 无需安装！直接在我们的演示站点试用：
 
-[![Live Demo](../../public/live-demo-button.svg)](https://next-ai-drawio.jiang.jp/)
-
 > **使用自己的 API Key**：您可以使用自己的 API Key 来绕过演示站点的用量限制。点击聊天面板中的设置图标即可配置您的 Provider 和 API Key。您的 Key 仅保存在浏览器本地，不会被存储在服务器上。
 
 ### 桌面应用
 
-从 [Releases 页面](https://github.com/DayuanJiang/next-ai-draw-io/releases) 下载适用于您平台的原生桌面应用：
+从 [Releases 页面](https://github.com/genai-drawio-creator/genai-drawio-creator/releases) 下载适用于您平台的原生桌面应用：
 
 支持的平台：Windows、macOS、Linux。
 
@@ -153,8 +141,8 @@ claude mcp add drawio -- npx @next-ai-drawio/mcp-server@latest
 1. 克隆仓库：
 
 ```bash
-git clone https://github.com/DayuanJiang/next-ai-draw-io
-cd next-ai-draw-io
+git clone https://github.com/genai-drawio-creator/genai-drawio-creator
+cd genai-drawio-creator
 npm install
 cp env.example .env.local
 ```
@@ -176,7 +164,7 @@ npm run dev
 您可以通过[腾讯云EdgeOne Pages](https://pages.edgeone.ai/zh)一键部署。
 
 直接点击此按钮一键部署：
-[![使用 EdgeOne Pages 部署](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://console.cloud.tencent.com/edgeone/pages/new?repository-url=https%3A%2F%2Fgithub.com%2FDayuanJiang%2Fnext-ai-draw-io)
+[![使用 EdgeOne Pages 部署](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://console.cloud.tencent.com/edgeone/pages/new?repository-url=https%3A%2F%2Fgithub.com%2Fgenai-drawio-creator%2Fgenai-drawio-creator)
 
 查看[腾讯云EdgeOne Pages文档](https://pages.edgeone.ai/zh/document/product-introduction)了解更多详情。
 
@@ -184,7 +172,7 @@ npm run dev
 
 ### 部署到Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FDayuanJiang%2Fnext-ai-draw-io)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgenai-drawio-creator%2Fgenai-drawio-creator)
 
 部署Next.js应用最简单的方式是使用Next.js创建者提供的[Vercel平台](https://vercel.com/new)。请确保在Vercel控制台中**设置环境变量**，就像您在本地 `.env.local` 文件中所做的那样。
 
@@ -197,7 +185,6 @@ npm run dev
 
 ## 多提供商支持
 
--   [字节跳动豆包](https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio)
 -   AWS Bedrock（默认）
 -   OpenAI
 -   Anthropic
@@ -238,20 +225,10 @@ npm run dev
 
 ## 支持与联系
 
-**特别感谢[字节跳动豆包](https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio)赞助演示站点的 API Token 使用！** 注册火山引擎 ARK 平台即可获得50万免费Token！
-
-如果您觉得这个项目有用，请考虑[赞助](https://github.com/sponsors/DayuanJiang)来帮助我托管在线演示站点！
-
-如需支持或咨询，请在GitHub仓库上提交issue或联系维护者：
-
--   邮箱：me[at]jiang.jp
+如需支持或咨询，请在GitHub仓库上提交issue。
 
 ## 常见问题
 
 请参阅 [FAQ](./FAQ.md) 了解常见问题和解决方案。
-
-## Star历史
-
-[![Star History Chart](https://api.star-history.com/svg?repos=DayuanJiang/next-ai-draw-io&type=date&legend=top-left)](https://www.star-history.com/#DayuanJiang/next-ai-draw-io&type=date&legend=top-left)
 
 ---

@@ -85,18 +85,6 @@ export function QuotaLimitToast({
             {/* Message */}
             <div className="text-sm text-muted-foreground leading-relaxed mb-4 space-y-2">
                 <p>{quotaMessage}</p>
-                {!isSelfHosted && (
-                    <p
-                        dangerouslySetInnerHTML={{
-                            __html: formatMessage(
-                                dict.quota.doubaoSponsorship,
-                                {
-                                    link: "https://www.volcengine.com/activity/codingplan?ac=MMAP8JTTCAQ2&rc=Z9Z3LDTJ&utm_campaign=drawio&utm_content=drawio&utm_medium=devrel&utm_source=OWO&utm_term=drawio",
-                                },
-                            ),
-                        }}
-                    />
-                )}
                 <p
                     dangerouslySetInnerHTML={{
                         __html: tipHtml,
@@ -122,22 +110,13 @@ export function QuotaLimitToast({
                 {!isSelfHosted && (
                     <>
                         <a
-                            href="https://github.com/DayuanJiang/next-ai-draw-io"
+                            href="https://github.com/genai-drawio-creator/genai-drawio-creator"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-foreground hover:bg-muted transition-colors"
                         >
                             <FaGithub className="w-3.5 h-3.5" />
                             {dict.quota.selfHost}
-                        </a>
-                        <a
-                            href="https://github.com/sponsors/DayuanJiang"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-foreground hover:bg-muted transition-colors"
-                        >
-                            <Coffee className="w-3.5 h-3.5" />
-                            {dict.quota.sponsor}
                         </a>
                     </>
                 )}

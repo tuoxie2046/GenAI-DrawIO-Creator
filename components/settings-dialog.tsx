@@ -76,8 +76,9 @@ interface SettingsDialogProps {
     onCustomSystemMessageChange?: (value: string) => void
 }
 
-export const STORAGE_ACCESS_CODE_KEY = "next-ai-draw-io-access-code"
-const STORAGE_ACCESS_CODE_REQUIRED_KEY = "next-ai-draw-io-access-code-required"
+export const STORAGE_ACCESS_CODE_KEY = "genai-drawio-creator-access-code"
+const STORAGE_ACCESS_CODE_REQUIRED_KEY =
+    "genai-drawio-creator-access-code-required"
 
 function getStoredAccessCodeRequired(): boolean | null {
     if (typeof window === "undefined") return null
@@ -178,7 +179,7 @@ function SettingsContent({
 
     const changeLanguage = (lang: string) => {
         // Save locale to localStorage for persistence across restarts
-        localStorage.setItem("next-ai-draw-io-locale", lang)
+        localStorage.setItem("genai-drawio-creator-locale", lang)
 
         // Notify Electron main process to update its menu language
         if (window.electronAPI?.setUserLocale) {
@@ -585,7 +586,7 @@ function SettingsContent({
                     </span>
                     <span className="text-muted-foreground">·</span>
                     <a
-                        href="https://github.com/DayuanJiang/next-ai-draw-io"
+                        href="https://github.com/genai-drawio-creator/genai-drawio-creator"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
