@@ -72,6 +72,8 @@
         "awsDescription": "Create a cloud architecture diagram with AWS icons",
         "replicateFlowchart": "Replicate Flowchart",
         "replicateDescription": "Upload and replicate an existing flowchart",
+        "microservices": "Microservices Diagram",
+        "microservicesDescription": "Generate, then style one node — AI applies it to all similar ones",
         "creativeDrawing": "Creative Drawing",
         "creativeDescription": "Draw something fun and creative",
         "cachedNote": "Examples are cached for instant response",

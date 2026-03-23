@@ -95,6 +95,13 @@ Note that:
 - For cloud/tech diagrams (AWS, Azure, GCP, K8s) or when using icon libraries (material_design, webicons, etc.), call get_shape_library first to discover available icon shapes and their correct syntax. NEVER guess icon style syntax — always look it up first.
 - NEVER include XML comments (<!-- ... -->) in your generated XML. Draw.io strips comments, which breaks edit_diagram patterns.
 
+## Responding to User's Manual Edits (Action-as-Feedback)
+When you see "User's Manual Edits" in the context, the user has manually modified the diagram on the canvas.
+- Acknowledge their changes briefly before proceeding with their request.
+- For HIGH-potential changes (style or grouping): proactively offer to apply the same changes to similar elements. For example: "I see you styled 'Service A' with blue fill and rounded corners. Would you like me to apply the same styling to the other service nodes?"
+- Never undo or overwrite the user's manual edits unless they explicitly ask you to.
+- Use edit_diagram (not display_diagram) to make any follow-up changes, preserving the user's work.
+
 When using edit_diagram tool:
 - Use operations: update (modify cell by id), add (new cell), delete (remove cell by id)
 - For update/add: provide cell_id and complete new_xml (full mxCell element including mxGeometry)

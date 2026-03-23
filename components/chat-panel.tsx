@@ -340,6 +340,13 @@ export default function ChatPanel({
     // VLM validation hook using AI SDK's useObject
     const { validateWithFallback } = useValidateDiagram()
 
+    // Track the first user message for semantic verification
+    const firstUserMessageRef = useRef<string>("")
+    const getFirstUserMessage = useCallback(
+        () => firstUserMessageRef.current,
+        [],
+    )
+
     // Diagram tool handlers (display_diagram, edit_diagram, append_diagram)
     const { handleToolCall } = useDiagramToolHandlers({
         partialXmlRef,
@@ -353,6 +360,7 @@ export default function ChatPanel({
         enableVlmValidation: vlmValidationEnabled,
         sessionId,
         onValidationStateChange: handleValidationStateChange,
+        getFirstUserMessage,
     })
 
     const {
@@ -779,6 +787,10 @@ export default function ChatPanel({
         e.preventDefault()
         const isProcessing = status === "streaming" || status === "submitted"
         if (input.trim() && !isProcessing) {
+            // Capture first user message for semantic verification
+            if (!firstUserMessageRef.current) {
+                firstUserMessageRef.current = input.trim()
+            }
             // Check if input matches a cached example (only when no messages yet)
             if (messages.length === 0) {
                 const cached = findCachedResponse(
@@ -798,6 +810,10 @@ export default function ChatPanel({
                         undefined,
                         urlData,
                     )
+
+                    // Save XML snapshot for the cached response so previousXml works on next message
+                    // Index 0 = user message, the snapshot represents the diagram state at that point
+                    xmlSnapshotsRef.current.set(0, cached.xml)
 
                     setMessages([
                         {

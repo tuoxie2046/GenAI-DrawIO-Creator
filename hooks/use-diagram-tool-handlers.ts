@@ -7,6 +7,7 @@ import type {
 } from "@/components/chat/ValidationCard"
 import type { ValidationResult } from "@/lib/diagram-validator"
 import { formatValidationFeedback } from "@/lib/diagram-validator"
+import { buildVerificationFeedback } from "@/lib/semantic-verification"
 import { isMxCellXmlComplete, wrapWithMxFile } from "@/lib/utils"
 
 const DEBUG = process.env.NODE_ENV === "development"
@@ -60,6 +61,8 @@ interface UseDiagramToolHandlersParams {
         toolCallId: string,
         state: ValidationState,
     ) => void
+    /** Returns the first user message text for semantic verification */
+    getFirstUserMessage?: () => string
 }
 
 /**
@@ -81,9 +84,12 @@ export function useDiagramToolHandlers({
     enableVlmValidation = true,
     sessionId,
     onValidationStateChange,
+    getFirstUserMessage,
 }: UseDiagramToolHandlersParams) {
     // Track validation retry count per tool call
     const validationRetryCountRef = useRef<Map<string, number>>(new Map())
+    // Track whether semantic verification has already fired (one-shot)
+    const semanticVerificationDoneRef = useRef(false)
 
     // Helper to update validation state
     const updateValidationState = (
@@ -352,6 +358,38 @@ ${finalXml}
                                 : "Validation failed",
                         imageData: capturedPngData || undefined,
                     })
+                }
+            }
+
+            // Semantic Verification (Informed Reflection) — one-shot
+            if (!semanticVerificationDoneRef.current && getFirstUserMessage) {
+                semanticVerificationDoneRef.current = true
+                try {
+                    const userMsg = getFirstUserMessage()
+                    const feedback = buildVerificationFeedback(
+                        userMsg,
+                        finalXml,
+                    )
+                    if (feedback) {
+                        if (DEBUG) {
+                            console.log(
+                                "[display_diagram] Semantic verification found missing components:",
+                                feedback,
+                            )
+                        }
+                        addToolOutput({
+                            tool: "display_diagram",
+                            toolCallId: toolCall.toolCallId,
+                            state: "output-error",
+                            errorText: feedback,
+                        })
+                        return
+                    }
+                } catch (err) {
+                    console.warn(
+                        "[display_diagram] Semantic verification error:",
+                        err,
+                    )
                 }
             }
 

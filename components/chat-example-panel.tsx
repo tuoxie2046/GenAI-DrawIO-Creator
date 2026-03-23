@@ -1,6 +1,7 @@
 "use client"
 
 import {
+    Boxes,
     Cloud,
     FileText,
     GitBranch,
@@ -191,6 +192,19 @@ export default function ExamplePanel({
                             )
                             setFiles([])
                         }}
+                    />
+
+                    <ExampleCard
+                        icon={<Boxes className="w-4 h-4 text-primary" />}
+                        title={dict.examples.microservices}
+                        description={dict.examples.microservicesDescription}
+                        onClick={() => {
+                            setInput(
+                                "Draw a microservices architecture with an API Gateway, User Service, Order Service, Payment Service, Notification Service, PostgreSQL Database, and RabbitMQ Message Queue",
+                            )
+                            setFiles([])
+                        }}
+                        isNew
                     />
 
                     <ExampleCard

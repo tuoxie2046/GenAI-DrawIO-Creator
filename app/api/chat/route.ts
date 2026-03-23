@@ -12,6 +12,7 @@ import fs from "fs/promises"
 import { jsonrepair } from "jsonrepair"
 import path from "path"
 import { z } from "zod"
+import { buildAafContext } from "@/lib/action-as-feedback"
 import {
     getAIModel,
     SINGLE_SYSTEM_PROVIDERS,
@@ -438,6 +439,10 @@ ${userInputText}
     // Merge them into a single system message for compatibility
     const isSingleSystemProvider = SINGLE_SYSTEM_PROVIDERS.has(resolvedProvider)
 
+    // Action-as-Feedback: detect user's manual canvas edits
+    const aafContext =
+        previousXml && xml ? buildAafContext(previousXml, xml) : null
+
     const xmlContext = `${
         previousXml
             ? `Previous diagram XML (before user's last message):
@@ -452,7 +457,7 @@ ${previousXml}
 ${xml || ""}
 """
 
-IMPORTANT: The "Current diagram XML" is the SINGLE SOURCE OF TRUTH for what's on the canvas right now. The user can manually add, delete, or modify shapes directly in draw.io. Always count and describe elements based on the CURRENT XML, not on what you previously generated. If both previous and current XML are shown, compare them to understand what the user changed. When using edit_diagram, COPY search patterns exactly from the CURRENT XML - attribute order matters!`
+IMPORTANT: The "Current diagram XML" is the SINGLE SOURCE OF TRUTH for what's on the canvas right now. The user can manually add, delete, or modify shapes directly in draw.io. Always count and describe elements based on the CURRENT XML, not on what you previously generated. If both previous and current XML are shown, compare them to understand what the user changed. When using edit_diagram, COPY search patterns exactly from the CURRENT XML - attribute order matters!${aafContext ? `\n\n${aafContext}` : ""}`
 
     const systemMessages = isSingleSystemProvider
         ? [

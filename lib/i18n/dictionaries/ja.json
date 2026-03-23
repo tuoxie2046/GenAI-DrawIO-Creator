@@ -72,6 +72,8 @@
         "awsDescription": "AWS アイコンでクラウドアーキテクチャ図を作成",
         "replicateFlowchart": "フローチャートを複製",
         "replicateDescription": "既存のフローチャートをアップロードして複製",
+        "microservices": "マイクロサービス構成図",
+        "microservicesDescription": "生成後にノードのスタイルを変更すると、AIが類似ノードに自動適用",
         "creativeDrawing": "クリエイティブな描画",
         "creativeDescription": "楽しくてクリエイティブなものを描く",
         "cachedNote": "例はキャッシュされ、即座に応答します",

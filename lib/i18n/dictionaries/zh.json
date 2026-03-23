@@ -72,6 +72,8 @@
         "awsDescription": "使用 AWS 图标创建云架构图",
         "replicateFlowchart": "复制流程图",
         "replicateDescription": "上传并复制现有流程图",
+        "microservices": "微服务架构图",
+        "microservicesDescription": "生成后修改一个节点样式，AI 会自动应用到所有类似节点",
         "creativeDrawing": "创意绘图",
         "creativeDescription": "绘制有趣且富有创意的内容",
         "cachedNote": "示例已缓存，可即时响应",

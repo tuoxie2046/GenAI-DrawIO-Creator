@@ -877,6 +877,71 @@ export const CACHED_EXAMPLE_RESPONSES: CachedResponse[] = [
     </mxGeometry>
   </mxCell>`,
     },
+    {
+        promptText:
+            "Draw a microservices architecture with an API Gateway, User Service, Order Service, Payment Service, Notification Service, PostgreSQL Database, and RabbitMQ Message Queue",
+        hasImage: false,
+        xml: `<mxCell id="title" value="Microservices Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+    <mxGeometry x="240" y="15" width="320" height="30" as="geometry"/>
+  </mxCell>
+
+  <mxCell id="gw" value="API Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+    <mxGeometry x="310" y="70" width="140" height="50" as="geometry"/>
+  </mxCell>
+
+  <mxCell id="user-svc" value="User Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+    <mxGeometry x="40" y="180" width="130" height="45" as="geometry"/>
+  </mxCell>
+
+  <mxCell id="order-svc" value="Order Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+    <mxGeometry x="200" y="180" width="130" height="45" as="geometry"/>
+  </mxCell>
+
+  <mxCell id="payment-svc" value="Payment Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+    <mxGeometry x="430" y="180" width="130" height="45" as="geometry"/>
+  </mxCell>
+
+  <mxCell id="notif-svc" value="Notification Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+    <mxGeometry x="600" y="180" width="130" height="45" as="geometry"/>
+  </mxCell>
+
+  <mxCell id="db" value="PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+    <mxGeometry x="120" y="310" width="100" height="70" as="geometry"/>
+  </mxCell>
+
+  <mxCell id="mq" value="RabbitMQ" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+    <mxGeometry x="530" y="310" width="100" height="70" as="geometry"/>
+  </mxCell>
+
+  <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;strokeWidth=1.5;" edge="1" parent="1" source="gw" target="user-svc">
+    <mxGeometry relative="1" as="geometry"/>
+  </mxCell>
+  <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;strokeWidth=1.5;" edge="1" parent="1" source="gw" target="order-svc">
+    <mxGeometry relative="1" as="geometry"/>
+  </mxCell>
+  <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;strokeWidth=1.5;" edge="1" parent="1" source="gw" target="payment-svc">
+    <mxGeometry relative="1" as="geometry"/>
+  </mxCell>
+  <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;strokeWidth=1.5;" edge="1" parent="1" source="gw" target="notif-svc">
+    <mxGeometry relative="1" as="geometry"/>
+  </mxCell>
+  <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;strokeWidth=1.5;dashed=1;" edge="1" parent="1" source="user-svc" target="db">
+    <mxGeometry relative="1" as="geometry"/>
+  </mxCell>
+  <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;strokeWidth=1.5;dashed=1;" edge="1" parent="1" source="order-svc" target="db">
+    <mxGeometry relative="1" as="geometry"/>
+  </mxCell>
+  <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;strokeWidth=1.5;dashed=1;" edge="1" parent="1" source="payment-svc" target="mq">
+    <mxGeometry relative="1" as="geometry"/>
+  </mxCell>
+  <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;strokeWidth=1.5;dashed=1;" edge="1" parent="1" source="mq" target="notif-svc">
+    <mxGeometry relative="1" as="geometry"/>
+  </mxCell>
+
+  <mxCell id="hint" value="💡 Try: Change one service node's color in the canvas, then ask AI to help" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontColor=#999999;" vertex="1" parent="1">
+    <mxGeometry x="170" y="410" width="420" height="25" as="geometry"/>
+  </mxCell>`,
+    },
 ]
 
 export function findCachedResponse(
