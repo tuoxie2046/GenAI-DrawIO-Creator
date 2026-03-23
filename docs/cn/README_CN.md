@@ -28,7 +28,6 @@
     - [使用Docker运行](#使用docker运行)
     - [安装](#安装)
   - [部署](#部署)
-    - [部署到腾讯云EdgeOne Pages](#部署到腾讯云edgeone-pages)
     - [部署到Vercel](#部署到vercel)
     - [部署到Cloudflare Workers](#部署到cloudflare-workers)
   - [多提供商支持](#多提供商支持)
@@ -158,17 +157,6 @@ npm run dev
 3. 在浏览器中打开 [http://localhost:6002](http://localhost:6002) 查看应用。
 
 ## 部署
-
-### 部署到腾讯云EdgeOne Pages
-
-您可以通过[腾讯云EdgeOne Pages](https://pages.edgeone.ai/zh)一键部署。
-
-直接点击此按钮一键部署：
-[![使用 EdgeOne Pages 部署](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://console.cloud.tencent.com/edgeone/pages/new?repository-url=https%3A%2F%2Fgithub.com%2Fgenai-drawio-creator%2Fgenai-drawio-creator)
-
-查看[腾讯云EdgeOne Pages文档](https://pages.edgeone.ai/zh/document/product-introduction)了解更多详情。
-
-同时，通过腾讯云EdgeOne Pages部署，也会获得[每日免费的DeepSeek模型额度](https://edgeone.cloud.tencent.com/pages/document/169925463311781888)。
 
 ### 部署到Vercel
 

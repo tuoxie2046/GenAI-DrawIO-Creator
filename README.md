@@ -28,7 +28,6 @@ A Next.js web application that integrates AI capabilities with draw.io diagrams.
     - [Run with Docker](#run-with-docker)
     - [Installation](#installation)
   - [Deployment](#deployment)
-    - [Deploy to EdgeOne Pages](#deploy-to-edgeone-pages)
     - [Deploy on Vercel](#deploy-on-vercel)
     - [Deploy on Cloudflare Workers](#deploy-on-cloudflare-workers)
   - [Multi-Provider Support](#multi-provider-support)
@@ -159,19 +158,7 @@ npm run dev
 
 ## Deployment
 
-### Deploy to EdgeOne Pages
-
-You can deploy with one click using [Tencent EdgeOne Pages](https://pages.edgeone.ai/).
-
-Deploy by this button: 
-
-[![Deploy to EdgeOne Pages](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://edgeone.ai/pages/new?repository-url=https%3A%2F%2Fgithub.com%2Fgenai-drawio-creator%2Fgenai-drawio-creator)
-
-Check out the [Tencent EdgeOne Pages documentation](https://pages.edgeone.ai/document/deployment-overview) for more details.
-
-Additionally, deploying through Tencent EdgeOne Pages will also grant you a [daily free quota for DeepSeek models](https://pages.edgeone.ai/document/edge-ai).
-
-### Deploy on Vercel 
+### Deploy on Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgenai-drawio-creator%2Fgenai-drawio-creator)
 
