@@ -16,25 +16,15 @@ A Next.js web application that integrates AI capabilities with draw.io diagrams.
 
 
 ## Table of Contents
-- [GenAI Drawio Creator](#genai-drawio-creator)
-  - [Table of Contents](#table-of-contents)
-  - [Examples](#examples)
-  - [Features](#features)
-  - [MCP Server (Preview)](#mcp-server-preview)
-    - [Claude Code CLI](#claude-code-cli)
-  - [Getting Started](#getting-started)
-    - [Try it Online](#try-it-online)
-    - [Desktop Application](#desktop-application)
-    - [Run with Docker](#run-with-docker)
-    - [Installation](#installation)
-  - [Deployment](#deployment)
-    - [Deploy on Vercel](#deploy-on-vercel)
-    - [Deploy on Cloudflare Workers](#deploy-on-cloudflare-workers)
-  - [Multi-Provider Support](#multi-provider-support)
-  - [How It Works](#how-it-works)
-  - [Support \& Contact](#support--contact)
-  - [FAQ](#faq)
-  - [Star History](#star-history)
+- [Examples](#examples)
+- [Features](#features)
+- [MCP Server (Preview)](#mcp-server-preview)
+- [Getting Started](#getting-started)
+- [Deployment](#deployment)
+- [Multi-Provider Support](#multi-provider-support)
+- [How It Works](#how-it-works)
+- [Citation](#citation)
+- [FAQ](#faq)
 
 ## Examples
 
@@ -78,14 +68,27 @@ Here are some example prompts and their generated diagrams:
 
 ## Features
 
+### Core
 -   **LLM-Powered Diagram Creation**: Leverage Large Language Models to create and manipulate draw.io diagrams directly through natural language commands
+-   **Non-Destructive Iteration**: Edit diagrams by cell ID — the agent modifies only the targeted elements, preserving all user refinements (positions, styles, groupings) across updates. Full regeneration is never needed.
 -   **Image-Based Diagram Replication**: Upload existing diagrams or images and have the AI replicate and enhance them automatically
 -   **PDF & Text File Upload**: Upload PDF documents and text files to extract content and generate diagrams from existing documents
--   **AI Reasoning Display**: View the AI's thinking process for supported models (OpenAI o1/o3, Gemini, Claude, etc.)
--   **Diagram History**: Comprehensive version control that tracks all changes, allowing you to view and restore previous versions of your diagrams before the AI editing.
 -   **Interactive Chat Interface**: Communicate with AI to refine your diagrams in real-time
--   **Cloud Architecture Diagram Support**: Specialized support for generating cloud architecture diagrams (AWS, GCP, Azure)
+-   **Cloud Architecture Diagram Support**: 34+ shape libraries (AWS, GCP, Azure, Kubernetes, BPMN, UML, Cisco, Material Design, and more)
 -   **Animated Connectors**: Create dynamic and animated connectors between diagram elements for better visualization
+
+### Agentic Features (NEW)
+
+-   **Action-as-Feedback (AaF)**: When you manually edit diagram elements on the canvas (change colors, move nodes, rename labels), the system detects your changes and describes them to the AI agent. For high-potential changes like style edits, the agent proactively offers to apply the same change across all similar elements — turning 1 manual edit into many coordinated updates. Zero LLM calls for the detection; all diff classification and NL translation is deterministic.
+-   **Semantic Verification**: After the AI generates a diagram, the system programmatically checks whether all requested components are present by comparing generated vertex labels against the user's request using directional string matching. If components are missing, the system injects specific feedback ("Missing: Redis Cache, Message Queue") so the agent adds them via `edit_diagram` — no open-ended "is this complete?" self-reflection.
+-   **Multi-Level Validation Pipeline**: Every generated diagram passes through structural validation (11 checks + 24-step auto-fix) and optional VLM visual validation (renders to bitmap, inspects for overlaps and layout issues). Critical issues trigger automatic repair.
+-   **Environment-Aware Generation (MCP)**: The agent reads your actual codebase via MCP — `package.json`, `docker-compose.yml`, route files — to discover components users forget to mention in text descriptions.
+
+### Quality of Life
+-   **Diagram History**: Automatic snapshots before each AI edit, with visual thumbnails and one-click restore
+-   **AI Reasoning Display**: View the AI's thinking process for supported models (OpenAI o1/o3, Gemini, Claude, etc.)
+-   **Prompt Caching**: System prompt and conversation history are cached (Bedrock), reducing input token cost by ~90% for repeated interactions
+-   **Streaming**: Real-time streaming of AI responses and diagram previews during generation
 
 ## MCP Server (Preview)
 
@@ -204,13 +207,21 @@ Note that the `claude` series has been trained on draw.io diagrams with cloud ar
 
 ## How It Works
 
-The application uses the following technologies:
+The application runs a **plan–tool–reflect** agentic loop:
 
--   **Next.js**: For the frontend framework and routing
--   **Vercel AI SDK** (`ai` + `@ai-sdk/*`): For streaming AI responses and multi-provider support
--   **react-drawio**: For diagram representation and manipulation
+1. **Plan**: The LLM receives the user's request, the current diagram XML, and (if applicable) a description of the user's recent manual edits (Action-as-Feedback). It plans which changes to make.
+2. **Tool Use**: The agent calls one of four structured tools:
+   - `display_diagram(xml)` — generate a new diagram from scratch
+   - `edit_diagram(operations)` — ID-based add/update/delete on specific cells (non-destructive)
+   - `get_diagram()` — read the current diagram state
+   - `get_shape_library(category)` — look up icon syntax for 34+ shape libraries
+3. **Reflect**: The system validates the output (structural checks + optional VLM visual inspection + semantic verification), and if issues are found, injects feedback so the agent self-corrects.
 
-Diagrams are represented as XML that can be rendered in draw.io. The AI processes your commands and generates or modifies this XML accordingly.
+**Tech stack:**
+-   **Next.js 16** + **React 19**: Frontend framework with split-pane UI (chat + draw.io canvas)
+-   **Vercel AI SDK** (`ai` + `@ai-sdk/*`): Streaming responses, tool calling, multi-provider support
+-   **draw.io**: Embedded diagram editor via iframe, communicating over `postMessage`
+-   **MCP Server**: Standalone Node.js process exposing diagram tools to Claude Desktop, VS Code, and Cursor
 
 
 ## Support & Contact
