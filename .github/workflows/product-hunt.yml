@@ -1,0 +1,74 @@
+name: Submit to Product Hunt
+
+on:
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Install Playwright
+        run: |
+          pip3 install --quiet playwright
+          playwright install chromium
+          playwright install-deps
+
+      - name: Submit to Product Hunt
+        env:
+          PH_EMAIL: ${{ secrets.PH_EMAIL }}
+          PH_PASSWORD: ${{ secrets.PH_PASSWORD }}
+        run: |
+          python3 << 'PYEOF'
+import asyncio
+from playwright.async_api import async_playwright
+
+async def main():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=True)
+        context = await browser.new_context(
+            viewport={'width': 1280, 'height': 800},
+            user_agent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36',
+        )
+        
+        page = await context.new_page()
+        
+        # Login
+        print("Navigating to PH login...")
+        await page.goto("https://www.producthunt.com/login", timeout=60000)
+        await asyncio.sleep(10)
+        
+        # Fill email
+        await page.fill('input[name="email"]', 'Illustrious_Hotel195@email.com')
+        await asyncio.sleep(1)
+        await page.fill('input[name="password"]', '1234567890Abc')
+        await asyncio.sleep(1)
+        await page.click('button[type="submit"]')
+        await asyncio.sleep(10)
+        
+        print(f"After login: {page.url}")
+        
+        # Navigate to submit
+        await page.goto("https://www.producthunt.com/posts/new", timeout=60000)
+        await asyncio.sleep(10)
+        
+        print(f"Submit page: {page.url}")
+        body = await page.inner_text("body")
+        print(f"Body: {body[:500]}")
+        
+        # Fill form
+        await page.fill('input[name="name"]', 'GenAI DrawIO Creator')
+        await asyncio.sleep(1)
+        
+        # Try to find and fill other fields
+        fields = await page.query_selector_all('input[name], textarea[name]')
+        for f in fields:
+            name = await f.get_attribute('name')
+            placeholder = await f.get_attribute('placeholder') or ''
+            print(f"  Field: name={name} placeholder={placeholder}")
+        
+        await browser.close()
+        print("Done!")
+
+asyncio.run(main())
+PYEOF
