@@ -20,10 +20,10 @@ jobs:
     steps:
       - name: Install Python & PRAW
         run: |
-          sudo apt-get update && sudo apt-get install -y python3-pip
-          pip3 install praw requests
+          pip3 install --quiet praw
+          pip3 install --quiet pyyaml
 
-      - name: Post to Reddit
+      - name: Create and run poster script
         env:
           REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
           REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
@@ -31,96 +31,71 @@ jobs:
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
         run: |
           python3 << 'PYEOF'
-          import requests
-          import json
-          import os
+import os
+import praw
+import prawcore
+import time
 
-          username = os.environ['REDDIT_USERNAME']
-          password = os.environ['REDDIT_PASSWORD']
-          client_id = os.environ.get('CLIENT_ID', '')
-          client_secret = os.environ.get('CLIENT_SECRET', '')
+username = os.environ['REDDIT_USERNAME']
+password = os.environ['REDDIT_PASSWORD']
+client_id = os.environ.get('CLIENT_ID', '')
+client_secret = os.environ.get('CLIENT_SECRET', '')
 
-          # Step 1: Get access token via OAuth
-          import base64
-          auth = base64.b64encode(f"{client_id}:{client_secret}".encode()).decode() if client_id else None
+subreddit_name = """${{ github.event.inputs.subreddit }}""".strip()
+title = """${{ github.event.inputs.title }}""".strip()
+body = """${{ github.event.inputs.body }}""".strip()
 
-          session = requests.Session()
-          session.headers.update({
-              'User-Agent': 'GenAI-DrawIO-Poster/0.1 (Linux GitHub Actions)',
-              'Content-Type': 'application/x-www-form-urlencoded',
-          })
+print(f"Attempting to post to r/{subreddit_name}")
+print(f"Title: {title[:60]}...")
 
-          # Try password grant
-          if client_id:
-              token_resp = session.post(
-                  'https://www.reddit.com/api/v1/access_token',
-                  data={
-                      'grant_type': 'password',
-                      'username': username,
-                      'password': password,
-                  },
-                  auth=(client_id, client_secret) if client_id else None,
-                  timeout=15
-              )
-              print(f"OAuth status: {token_resp.status_code}")
-              if token_resp.status_code == 200:
-                  access_token = token_resp.json().get('access_token')
-                  print(f"Got access token!")
-              else:
-                  access_token = None
-                  print(f"OAuth failed: {token_resp.text}")
-          else:
-              access_token = None
+# Try with OAuth if we have client credentials
+if client_id and client_secret:
+    print("Using OAuth with PRAW...")
+    reddit = praw.Reddit(
+        client_id=client_id,
+        client_secret=client_secret,
+        password=password,
+        username=username,
+        user_agent="GenAI-DrawIO-Poster/0.1",
+    )
+else:
+    print("No client credentials - trying PRAW without OAuth...")
+    # Without client credentials, we need to use read-only mode
+    # or try password flow
+    print("WARNING: Without CLIENT_ID/SECRET, posting may not work")
+    print("Attempting with basic PRAW anyway...")
 
-          # Step 2: Try cookie-based login as fallback
-          if not access_token:
-              login_resp = session.post(
-                  'https://www.reddit.com/post/login/json',
-                  json={'op': 'login-main', 'user': username, 'passwd': password},
-                  headers={'X-Requested-With': 'XMLHttpRequest'},
-                  timeout=15
-              )
-              print(f"Cookie login status: {login_resp.status_code}")
+    try:
+        reddit = praw.Reddit(
+            client_id="",
+            client_secret="",
+            username=username,
+            password=password,
+            user_agent="GenAI-DrawIO-Poster/0.1",
+        )
+        print(f"Authenticated as: {reddit.user.me()}")
+    except Exception as e:
+        print(f"Auth error: {e}")
+        reddit = None
 
-          # Step 3: Get subreddit info
-          session.headers.update({'Authorization': f'bearer {access_token}' if access_token else ''})
-          r = session.get('https://www.reddit.com/r/MachineLearning/about.json', timeout=10)
-          print(f"Subreddit info: {r.status_code}")
-
-          # Step 4: Submit post via API
-          subreddit = """${{ github.event.inputs.subreddit }}""".strip()
-          title = """${{ github.event.inputs.title }}""".strip()
-          body = """${{ github.event.inputs.body }}""".strip()
-
-          submit_data = {
-              'sr': subreddit,
-              'title': title,
-              'text': body,
-              'kind': 'self',
-              'api_type': 'json',
-          }
-
-          if access_token:
-              resp = session.post(
-                  'https://oauth.reddit.com/api/submit',
-                  data=submit_data,
-                  timeout=15
-              )
-          else:
-              resp = session.post(
-                  'https://www.reddit.com/api/submit',
-                  data=submit_data,
-                  timeout=15
-              )
-
-          print(f"Submit status: {resp.status_code}")
-          print(f"Submit response: {resp.text[:500]}")
-
-          if resp.status_code == 200:
-              result = resp.json() if resp.headers.get('content-type', '').startswith('application/json') else {}
-              print(f"SUCCESS! Post submitted.")
-              print(f"Response: {result}")
-          else:
-              print(f"FAILED: {resp.status_code} - {resp.text[:500]}")
-
-          PYEOF
+if reddit:
+    try:
+        subreddit = reddit.subreddit(subreddit_name)
+        print(f"Submitting to r/{subreddit_name}...")
+        
+        submission = subreddit.submit(title=title, selftext=body)
+        print(f"SUCCESS! Post URL: https://reddit.com{submission.permalink}")
+        print(f"Post ID: {submission.id}")
+    except prawcore.exceptions.Forbidden as e:
+        print(f"Forbidden: {e}")
+        print("This usually means the account needs email/phone verification")
+    except prawcore.exceptions.ResponseException as e:
+        print(f"Response exception: {e}")
+    except Exception as e:
+        print(f"Error: {e}")
+        # Print full traceback
+        import traceback
+        traceback.print_exc()
+else:
+    print("Could not authenticate - cannot post")
+    PYEOF
