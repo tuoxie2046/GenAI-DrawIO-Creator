@@ -1,0 +1,126 @@
+name: Post to Reddit
+
+on:
+  workflow_dispatch:
+    inputs:
+      subreddit:
+        description: 'Subreddit to post to'
+        required: true
+        default: 'MachineLearning'
+      title:
+        description: 'Post title'
+        required: true
+      body:
+        description: 'Post body'
+        required: true
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Python & PRAW
+        run: |
+          sudo apt-get update && sudo apt-get install -y python3-pip
+          pip3 install praw requests
+
+      - name: Post to Reddit
+        env:
+          REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
+          REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        run: |
+          python3 << 'PYEOF'
+          import requests
+          import json
+          import os
+
+          username = os.environ['REDDIT_USERNAME']
+          password = os.environ['REDDIT_PASSWORD']
+          client_id = os.environ.get('CLIENT_ID', '')
+          client_secret = os.environ.get('CLIENT_SECRET', '')
+
+          # Step 1: Get access token via OAuth
+          import base64
+          auth = base64.b64encode(f"{client_id}:{client_secret}".encode()).decode() if client_id else None
+
+          session = requests.Session()
+          session.headers.update({
+              'User-Agent': 'GenAI-DrawIO-Poster/0.1 (Linux GitHub Actions)',
+              'Content-Type': 'application/x-www-form-urlencoded',
+          })
+
+          # Try password grant
+          if client_id:
+              token_resp = session.post(
+                  'https://www.reddit.com/api/v1/access_token',
+                  data={
+                      'grant_type': 'password',
+                      'username': username,
+                      'password': password,
+                  },
+                  auth=(client_id, client_secret) if client_id else None,
+                  timeout=15
+              )
+              print(f"OAuth status: {token_resp.status_code}")
+              if token_resp.status_code == 200:
+                  access_token = token_resp.json().get('access_token')
+                  print(f"Got access token!")
+              else:
+                  access_token = None
+                  print(f"OAuth failed: {token_resp.text}")
+          else:
+              access_token = None
+
+          # Step 2: Try cookie-based login as fallback
+          if not access_token:
+              login_resp = session.post(
+                  'https://www.reddit.com/post/login/json',
+                  json={'op': 'login-main', 'user': username, 'passwd': password},
+                  headers={'X-Requested-With': 'XMLHttpRequest'},
+                  timeout=15
+              )
+              print(f"Cookie login status: {login_resp.status_code}")
+
+          # Step 3: Get subreddit info
+          session.headers.update({'Authorization': f'bearer {access_token}' if access_token else ''})
+          r = session.get('https://www.reddit.com/r/MachineLearning/about.json', timeout=10)
+          print(f"Subreddit info: {r.status_code}")
+
+          # Step 4: Submit post via API
+          subreddit = """${{ github.event.inputs.subreddit }}""".strip()
+          title = """${{ github.event.inputs.title }}""".strip()
+          body = """${{ github.event.inputs.body }}""".strip()
+
+          submit_data = {
+              'sr': subreddit,
+              'title': title,
+              'text': body,
+              'kind': 'self',
+              'api_type': 'json',
+          }
+
+          if access_token:
+              resp = session.post(
+                  'https://oauth.reddit.com/api/submit',
+                  data=submit_data,
+                  timeout=15
+              )
+          else:
+              resp = session.post(
+                  'https://www.reddit.com/api/submit',
+                  data=submit_data,
+                  timeout=15
+              )
+
+          print(f"Submit status: {resp.status_code}")
+          print(f"Submit response: {resp.text[:500]}")
+
+          if resp.status_code == 200:
+              result = resp.json() if resp.headers.get('content-type', '').startswith('application/json') else {}
+              print(f"SUCCESS! Post submitted.")
+              print(f"Response: {result}")
+          else:
+              print(f"FAILED: {resp.status_code} - {resp.text[:500]}")
+
+          PYEOF
