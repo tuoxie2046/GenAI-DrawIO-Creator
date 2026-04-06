@@ -1,0 +1,47 @@
+name: Feature Request
+description: Suggest a new feature or improvement
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        
+        ### Problem / Use Case
+        What problem does this solve?
+        
+        ### Suggested Solution
+        How should it work?
+        
+        ### Example
+        ```
+        /describe diagram of...
+        ```
+
+---
+
+name: Bug Report
+description: Report a bug
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Report
+        
+        ### Describe the Bug
+        A clear description.
+        
+        ### To Reproduce
+        Steps to reproduce the behavior.
+        
+        ### Expected Behavior
+        What you expected to happen.
+        
+        ### Screenshots
+        If applicable.
+        
+        ### Environment
+        - Provider used: 
+        - Model:
+        - Browser:
