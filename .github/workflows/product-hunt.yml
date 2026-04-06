@@ -1,0 +1,50 @@
+name: Submit to Product Hunt
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install Playwright and Chromium
+        run: |
+          pip install playwright --quiet
+          python -m playwright install chromium --with-deps
+          playwright install-deps
+          chromium --version || echo "Chromium installed"
+          
+      - name: Run Playwright test
+        run: |
+          python3 << 'PYEOF'
+import asyncio
+from playwright.async_api import async_playwright
+
+async def main():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=True)
+        page = await browser.new_page()
+        
+        print("Navigating to Product Hunt...")
+        response = await page.goto("https://www.producthunt.com", timeout=120000)
+        print(f"Response status: {response.status}")
+        print(f"URL: {page.url}")
+        print(f"Title: {await page.title()}")
+        
+        body_text = await page.inner_text("body")
+        print(f"Body length: {len(body_text)}")
+        print(f"Body preview: {body_text[:500]}")
+        
+        await browser.close()
+
+asyncio.run(main())
+PYEOF

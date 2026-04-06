@@ -1,0 +1,35 @@
+# Reddit Weekly Crosspost Workflow
+# Runs weekly to crosspost to new communities
+
+name: Weekly Reddit Engagement
+
+on:
+  schedule:
+    # Every Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  engage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for new comments on existing posts
+        run: |
+          echo "Checking for comments on existing posts..."
+          # This would need your Reddit credentials as secrets
+          # For now, just a placeholder
+          echo "Placeholder for comment checking"
+      
+      - name: Post to new subreddits
+        run: |
+          # Different angle each week
+          WEEK_NUM=$(date +%U)
+          
+          case $((WEEK_NUM % 4)) in
+            0) SUBREDDITS="SideProject,startups" ;;
+            1) SUBREDDITS="SaaS,buildinpublic" ;;
+            2) SUBREDDITS="VSCode,programming,Python" ;;
+            3) SUBREDDITS="webdev,javascript,Nextjs" ;;
+          esac
+          
+          echo "This week's target subreddits: $SUBREDDITS"

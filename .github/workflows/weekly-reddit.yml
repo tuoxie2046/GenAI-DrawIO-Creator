@@ -1,0 +1,74 @@
+name: Weekly Reddit Engagement
+
+on:
+  schedule:
+    # Every Monday at 9 AM UTC = 5 PM JST
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  weekly-post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Weekly Reddit Crosspost
+        env:
+          REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
+          REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        run: |
+          python3 << 'PYEOF'
+import os
+import time
+import praw
+from praw.models.reddit.subreddit import Subreddit
+
+reddit = praw.Reddit(
+    client_id=os.environ.get('CLIENT_ID', ''),
+    client_secret=os.environ.get('CLIENT_SECRET', ''),
+    username=os.environ.get('REDDIT_USERNAME', ''),
+    password=os.environ.get('REDDIT_PASSWORD', ''),
+    user_agent="GenAI-DrawIO/0.1 (weekly crosspost)"
+)
+
+# Different subreddits each week
+import datetime
+week = datetime.date.today().isocalendar()[1]
+
+POSTS = [
+    # Week 1
+    {
+        "sub": "SideProject",
+        "title": "I built an AI that generates architecture diagrams from text — open source, MCP-powered",
+        "body": "Built a tool that turns natural language into draw.io diagrams. The agent loop plan→generate→verify→self-correct means it catches its own mistakes.\n\nKey features:\n- MCP server for Claude Desktop / Cursor\n- 34+ shape libraries (AWS, GCP, Azure, K8s)\n- Non-destructive editing\n- Multi-provider (OpenAI, Claude, Gemini, Ollama, etc.)\n\nGitHub: https://github.com/tuoxie2046/GenAI-DrawIO-Creator\nDemo: https://genai-drawio-creator.vercel.app"
+    },
+    # Week 2
+    {
+        "sub": "buildinpublic",
+        "title": "Built in public: AI-powered diagram generator from idea to open source launch",
+        "body": "Documenting my journey building an AI agent for diagram generation.\n\nThe core challenge: existing AI diagram tools are black boxes. You can't verify if the output actually matches what you asked for.\n\nSolution: semantic verification pipeline. The agent checks its own output and self-corrects.\n\nGitHub: https://github.com/tuoxie2046/GenAI-DrawIO-Creator\nWould love feedback from developers building in public!"
+    },
+    # Week 3
+    {
+        "sub": "javascript",
+        "title": "Next.js + MCP + draw.io: built a diagram tool with AI agentic loop",
+        "body": "Tech stack: Next.js 16 + Vercel AI SDK + draw.io iframe + MCP server.\n\nThe agentic loop: plan→generate XML→semantic verification→self-correct if needed→render.\n\nSupports 10+ AI providers and 34+ shape libraries.\n\nGitHub: https://github.com/tuoxie2046/GenAI-DrawIO-Creator"
+    },
+    # Week 4
+    {
+        "sub": "selfhosted",
+        "title": "Self-hostable diagram generator — fully local with Ollama support",
+        "body": "GenAI-DrawIO-Creator now supports Ollama for fully local diagram generation.\n\nNo API calls needed — everything runs on your own hardware.\n\nWorks best with 32B+ models. MCP server included.\n\nGitHub: https://github.com/tuoxie2046/GenAI-DrawIO-Creator\nDemo: https://genai-drawio-creator.vercel.app"
+    },
+]
+
+post = POSTS[week % len(POSTS)]
+print(f"Posting to r/{post['sub']}...")
+
+try:
+    subreddit = reddit.subreddit(post['sub'])
+    submission = subreddit.submit(title=post['title'], selftext=post['body'])
+    print(f"Posted! URL: https://reddit.com{submission.permalink}")
+except Exception as e:
+    print(f"Error: {e}")
+PYEOF

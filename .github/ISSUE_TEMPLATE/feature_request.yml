@@ -1,0 +1,24 @@
+---
+name: Feature request
+about: Suggest a new feature or improvement
+title: '[FEATURE] '
+labels: enhancement
+assignees: ''
+
+---
+
+**Problem you want to solve**
+A clear description of the problem you're trying to solve.
+
+**Describe the solution you'd like**
+A clear description of what you want to happen.
+
+**Describe alternatives you've considered**
+Any alternative solutions you've considered.
+
+**Additional context**
+Add any other context, mockups, or examples about the feature request here.
+
+**Would you like to work on this?**
+- [ ] Yes, I want to work on this!
+- [ ] No, but I'd like to suggest it

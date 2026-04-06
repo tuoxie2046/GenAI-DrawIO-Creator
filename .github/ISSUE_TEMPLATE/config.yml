@@ -1,5 +1,8 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
-  - name: Discussions
-    url: https://github.com/DayuanJiang/genai-drawio-creator/discussions
-    about: Have questions or ideas? Feel free to start a discussion
+  - name: 💬 Discord Community
+    url: https://discord.gg/GenAI-DrawIO
+    about: Join our community for help and discussions
+  - name: 📖 Documentation
+    url: https://github.com/tuoxie2046/GenAI-DrawIO-Creator#readme
+    about: Check the full documentation before opening an issue
