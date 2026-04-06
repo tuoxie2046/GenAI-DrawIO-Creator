@@ -1,47 +1,33 @@
-name: Feature Request
-description: Suggest a new feature or improvement
-labels: ["enhancement"]
-body:
-  - type: markdown
-    attributes:
-      value: |
-        ## Feature Request
-        
-        ### Problem / Use Case
-        What problem does this solve?
-        
-        ### Suggested Solution
-        How should it work?
-        
-        ### Example
-        ```
-        /describe diagram of...
-        ```
+---
+name: "\U0001F41B Good First Issue"
+about: Good for newcomers
+title: '[good first issue] '
+labels: good first issue, help wanted
+assignees: ''
 
 ---
 
-name: Bug Report
-description: Report a bug
-labels: ["bug"]
-body:
-  - type: markdown
-    attributes:
-      value: |
-        ## Bug Report
-        
-        ### Describe the Bug
-        A clear description.
-        
-        ### To Reproduce
-        Steps to reproduce the behavior.
-        
-        ### Expected Behavior
-        What you expected to happen.
-        
-        ### Screenshots
-        If applicable.
-        
-        ### Environment
-        - Provider used: 
-        - Model:
-        - Browser:
+## Looking for Contributors
+
+This issue is tagged as **"good first issue"** — perfect for newcomers!
+
+### What needs to be done
+<!-- Describe the specific task -->
+
+### Why it matters
+<!-- Explain the impact -->
+
+### How to get started
+1. Comment on this issue to claim it
+2. Fork the repo and create a new branch
+3. Make your changes
+4. Submit a PR with a clear description
+
+### Resources
+- [Contributing Guide](./CONTRIBUTING.md)
+- [README](./README.md)
+- [Docs](./docs/)
+
+**Repo:** https://github.com/tuoxie2046/GenAI-DrawIO-Creator
+
+Questions? Just ask!

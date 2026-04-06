@@ -76,3 +76,43 @@ python -m vllm.entrypoints.openai.api_server \
 - Update to latest version (v0.4.9+)
 
 **Related Issues**: #324, #421, #469
+
+## How can I contribute?
+
+We welcome contributions! See [CONTRIBUTING.md](../CONTRIBUTING.md) for setup instructions.
+
+### Good First Issues
+
+Looking for a starting point? Check these:
+
+- 🐛 [Add more diagram templates](https://github.com/tuoxie2046/GenAI-DrawIO-Creator/issues?q=label%3A%22good+first+issue%22)
+- 🎨 [Improve the UI/UX](https://github.com/tuoxie2046/GenAI-DrawIO-Creator/issues?q=label%3Aenhancement)
+- 🔌 [Add a new AI provider](https://github.com/tuoxie2046/GenAI-DrawIO-Creator/issues?q=label%3Aprovider)
+- 📱 [Mobile responsiveness improvements](https://github.com/tuoxie2046/GenAI-DrawIO-Creator/issues?q=label%3Amobile)
+- 🌐 [Help with translations](https://github.com/tuoxie2046/GenAI-DrawIO-Creator/issues?q=label%3Adocs)
+
+## How does the MCP server work?
+
+The MCP server lets you generate diagrams from any MCP-compatible AI tool:
+
+```bash
+npx genai-drawio-mcp
+```
+
+Then in Cursor or Claude Code:
+
+```
+User: Draw a Kubernetes deployment with 3 API server pods, etcd, and a deployment manager.
+```
+
+The MCP server receives the request and returns a draw.io SVG/XML that renders in real-time.
+
+## Which AI providers are supported?
+
+| Provider | API Key Required | Notes |
+|----------|-----------------|-------|
+| OpenAI (GPT-4o) | ✅ | Best quality |
+| Anthropic (Claude) | ✅ | Great for complex diagrams |
+| Google Gemini | ✅ | Free tier available |
+| Azure OpenAI | ✅ | Enterprise |
+| Kimi (Moonshot) | ✅ | Chinese users |
