@@ -9,6 +9,9 @@ English | [中文](./docs/cn/README_CN.md) | [日本語](./docs/ja/README_JA.md)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Next.js](https://img.shields.io/badge/Next.js-16.x-black)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.x-61dafb)](https://react.dev/)
+[![Stars](https://img.shields.io/github/stars/tuoxie2046/GenAI-DrawIO-Creator?style=social)](https://github.com/tuoxie2046/GenAI-DrawIO-Creator/stargazers)
+[![Star History](https://api.star-history.com/svg?repos=tuoxie2046/GenAI-DrawIO-Creator&type=Timeline)](https://star-history.com/#tuoxie2046/GenAI-DrawIO-Creator&Timeline)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftuoxie2046%2FGenAI-DrawIO-Creator)
 
 </div>
 
